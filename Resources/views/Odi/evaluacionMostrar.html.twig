@@ -1,0 +1,500 @@
+{% extends 'SedaBundle::layout.html.twig' %}
+
+{% block contenido %}
+
+{# Objetivos
+
+
+ {{ odi.evaluacion[0] | ld }}
+#}
+<div class="class row">
+		<H2 align="center">ESTABLECIMIENTO Y EVALUACIÓN DE LOS OBJETIVOS DE DESEMPEÑO INDIVIDUAL</H2>
+</div>
+{#
+{{ form_start(form, { 'attr': {'novalidate': 'novalidate', 'class': 'form-inline', 'id': 'evaluacion'} }) }}
+		    {{ form_errors(form) }}
+#}
+
+<div class="row">
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Funcionario</th>
+				<th>Periodo</th>
+				<th>Año</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td align = "center">{{ odi.usuario }}</td>
+				<td align = "center">
+					{% if odi.periodo == 1 %}
+					    1er. Semestre
+					{% endif %}
+					{% if odi.periodo == 2 %}
+					    2do. Semestre
+					{% endif %}						
+				</td align = "center">
+				<td>{{ odi.ano }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+
+
+<div class="row">
+	
+		<table class="table table-striped" >
+			<thead>
+				<tr>
+					<th rowspan="2" valign="middle">Objetivos de Desempeño Individual</th>
+					<th rowspan="2" valign="middle">Peso</th>
+					<th colspan="5" >Rangos</th>
+					<th rowspan="2" valign="middle">Peso x Rangos</th>
+				</tr>
+				<tr>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% set i = 0 %}
+			{% for objetivo in odi.objetivos %}
+				<tr>
+					<td width="60%" align = "justify">{{ objetivo.objetivo }}</td>
+					<td width="10%" align = "center">
+		        		<div>{{ odi.objetivos[i].peso }}</div>
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.objetivos[i].rango == 1 %}
+								X
+							{% endif %}
+		        		</div>
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.objetivos[i].rango == 2 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.objetivos[i].rango == 3 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.objetivos[i].rango == 4 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.objetivos[i].rango == 5 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="10%" align = "center">
+		        		<div>{{ odi.objetivos[i].pesoxrango }}</div>
+					</td>
+				</tr>
+			{% set i = i + 1 %}	
+			{% endfor %}
+			</tbody>
+			<tfoot>	
+				<tr>
+					<td></td>
+					<td align = "center">50</td>
+					<td align = "center" colspan="5">Total</td>
+					<td align = "center">
+		        		<div>{{ odi.evaluacion[0].totalobjetivos }}</div>
+					</td>
+			
+				</tr>
+			</tfoot>
+			
+		</table>
+</div>
+
+
+
+{# Competencias 
+
+
+{{ odi.evalcompetencia[1] | ld }}
+#}
+
+
+
+<div class="class row">
+		<H2 align="center">EVALUACIÓN DE COMPETENCIAS</H2>
+</div>
+<div class="row">
+	
+		<table class="table table-striped" >
+			<thead>
+				<tr>
+					<th rowspan="2" >Competencias</th>
+					<th rowspan="2" >Peso</th>
+					<th colspan="5" >Rangos</th>
+					<th rowspan="2" >Peso x Rangos</th>
+				</tr>
+				<tr>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+				</tr>				
+			</thead>
+			<tbody>
+
+			{% for i in 0..7  %}
+				<tr>
+					<td width="60%" align = "justify">{{ odi.evalcompetencia[i].competencia.descripcion | raw }}</td>
+					<td width="10%" align = "center">
+		        		<div>{{ odi.evalcompetencia[i].peso }}</div>
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.evalcompetencia[i].rango == 1 %}
+								X
+							{% endif %}
+		        		</div>
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.evalcompetencia[i].rango == 2 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.evalcompetencia[i].rango == 3 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.evalcompetencia[i].rango == 4 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.evalcompetencia[i].rango == 5 %}
+								X
+							{% endif %}
+		        		</div>
+					</td>
+					<td width="10%" align = "center">
+		        		<div>{{ odi.evalcompetencia[i].pesoxrango }}</div>
+					</td>
+				</tr>
+
+			{% endfor %}
+			</tbody>
+			<tfoot>
+				<tr>
+					<td></td>
+					<td align = "center">50</td>
+					<td align = "center" colspan="5">Total</td>
+					<td align = "center">
+		        		<div>{{ odi.evaluacion[0].totalcompetencias }}</div>
+					</td>
+				</tr>
+			</tfoot>				
+		</table>
+</div>
+
+
+
+
+{# Evaluacion 
+
+{{ evaluacion | ld }} 
+
+{{ formularioEvaluacion | ld }} 
+#}
+
+<div class="class row">
+		<H2 align="center">TOTALES Y RANGO DE ACTUACION</H2>
+</div>
+
+<div class="row" align="center">
+<div class="col-md-1"></div>	
+<div class="col-md-4">
+	<table class="table table-striped" >
+		<thead>
+			<tr>
+				<th colspan = "2">CALIFICACIÓN FINAL</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>TOTAL OBJETIVOS (SECCION "B")</td>
+				<td>
+	        		<div>{{ odi.evaluacion[0].totalobjetivos }}</div>
+				</td>
+			</tr>
+			<tr>
+				<td>TOTAL COMPETENCIAS (SECCION "C")</td>
+				<td>
+	        		<div>{{ odi.evaluacion[0].totalcompetencias }}</div>
+				</td>
+
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>PUNTAJE FINAL "B + C"</td>
+				<td>
+	        		<div>{{ odi.evaluacion[0].total }}</div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+<div class="col-md-1"></div>
+<div class="col-md-6">
+	<h4>RANGO DE ACTUACION</h4>
+	<h3 id="actuacion" class="text-primary">
+		{% if (odi.evaluacion[0].total >= 100) and (odi.evaluacion[0].total <= 179) %}
+		    MUY POR DEBAJO DE LO ESPERADO
+		{% elseif (odi.evaluacion[0].total >= 180) and (odi.evaluacion[0].total <= 259) %}
+			POR DEBAJO DE LO ESPERADO 
+		{% elseif (odi.evaluacion[0].total >= 260) and (odi.evaluacion[0].total <= 339) %}
+			DENTRO DE LO ESPERADO
+		{% elseif (odi.evaluacion[0].total >= 340) and (odi.evaluacion[0].total <= 419) %}
+			SOBRE LO ESPERADO
+		{% elseif (odi.evaluacion[0].total >= 420) and (odi.evaluacion[0].total <= 500) %}
+			DESEMPEÑO EXCEPCIONAL
+		{% endif %}		
+	</h3>
+</div>
+
+</div>
+
+<div class="row" align="center">
+	<div class="col-md-1"></div>	
+	<div class="col-md-10">
+		<table class="table table-striped" >
+			<thead>
+				<tr>
+					<th>COMENTARIOS DEL EVALUADOR</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<p style="text-align:justify"> {{ odi.evaluacion[0].comentarioSupervisor }}</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-1"></div>
+</div>			
+{% if odi.evaluacion[0].aprobacionEvaluado == true %}
+
+	<div class="row" align="center">
+		<div class="col-md-1"></div>	
+		<div class="col-md-10">
+			<table class="table table-striped" >
+				<thead>
+					<tr>
+						<th>COMENTARIOS DEL EVALUADO</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<p style="text-align:justify"> {{ odi.evaluacion[0].comentarioSupervisado }}</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-1"></div>
+	</div>	
+{% endif %}	
+
+{# INSTRUCTIVO N5 #}
+<div class="row">
+		{% if (odi.evaluacion[0].total >= 420) and (odi.evaluacion[0].total <= 500) %}
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>EXPOSICION DE MOTIVOS/ASIGNACION DEL RANGO EXCEPCIONAL</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1-. Identifique los <strong>LOGROS ADICIONALES</strong> alcanzados, especifique  cual (es), cuando?  y como?</td>
+					</tr>
+					<tr>
+						<td align = "justify">{{ odi.evaluacion[0].logroAdicional }}</td>
+					</tr>
+					<tr>
+						<td>2-.Especifique  el <strong>IMPACTO</strong> de los logros adicionales alcanzados para el Departamento, Dirección o  para la gestión especifica de la Institución.</td>
+					</tr>
+					<tr>
+						<td align = "justify">{{ odi.evaluacion[0].impacto }}</td>
+					</tr>
+					<tr>
+						<td>3-.Identifique las <strong>COMPETENCIAS INDIVIDUALES</strong> más resaltantes en el supervisado que le facilitaron el alcance de los logros adicionales.</td>
+					</tr>
+					<tr>
+						<td align = "justify">{{ odi.evaluacion[0].competenciasIndividual }}</td>
+					</tr>																									
+				</tbody>
+			</table>
+		{% endif %}	
+</div>
+
+
+
+{#
+{{ odi.evaluacion[0].aprobacionEvaluado| ld }}
+{{ odi.evaluacion[0].comentariosupervisado | ld }}
+#}
+
+	
+		{% if (odi.evaluacion[0].aprobacionEvaluado == true  or odi.evaluacion[0].aprobacionEvaluado == false) and odi.evaluacion[0].fechaEvaluado is not null %}
+			<br>
+			<div class="row">
+			<div class="col-md-1"></div>	
+			<div class="col-md-10" align="right">FECHA  DE EVALUACIÓN:{{ odi.evaluacion[0].fecha|date('d/m/Y') }}</div>
+			<div class="col-md-1"></div>	
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-10">PARA SER LLENADO POR EL EVALUADO:</div>
+				<div class="col-md-1"></div>
+			</div>  
+			<div class="row">
+				<div class="col-md-1"></div>	
+				<div class="col-md-10" align="left">						
+					{% if odi.evaluacion[0].aprobacionevaluado == 1 %}
+					   ¿Esta de acuerdo? <strong>Si</strong>
+					{% else %}
+					    ¿Esta de acuerdo? <strong>No</strong>
+					{% endif %}	
+
+				</div>
+				<div class="col-md-1"></div>
+			</div>	
+
+			<div class="row" align="center">
+				<div class="col-md-1"></div>	
+				<div class="col-md-10">
+					<table class="table table-striped" cellspacing=0 cellpadding=2 >
+						<thead>
+							<tr>
+								<th>COMENTARIOS DEL SUPERVISADO</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td >
+									<p style=""> {{ odi.evaluacion[0].comentariosupervisado }}</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-1"></div>
+			</div>			
+			<br>
+			<div class="row">
+			<div class="col-md-1"></div>	
+			<div class="col-md-10" >FECHA  DE APROBACION DEL EVALUADO:{{ odi.evaluacion[0].fechaEvaluado|date('d/m/Y') }}</div>
+			<div class="col-md-1"></div>	
+			</div>	
+
+
+			
+		{% else %}
+			{% if odi.usuario.id == usuario %}
+			{{ form_start(formulario, { 'attr': {'novalidate': 'novalidate', 'class': 'from', 'id': 'mostrarevaluacion'} }) }}
+			    {{ form_errors(formulario) }}
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-10">PARA SER LLENADO POR EL EVALUADO:</div>
+				<div class="col-md-1"></div>
+			</div>    
+		   <div class="row">
+			    <div class="form-group">
+			    	<div class="col-md-1"></div>
+					<div class="col-md-2 control-label">{{ form_label(formulario.aprobacionevaluado, '¿Esta de acuerdo?') }}</div>	
+			        <div class="col-md-2">{{ form_widget(formulario.aprobacionevaluado) }} </div>
+				    <div class="col-md-6"><p class="bg-danger" align="center">Es obligatorio selecionar una opcion</p></div>
+				    <div class="col-md-1"></div>
+			    </div>
+		    </div>
+		   <div class="row">
+			    <div class="form-group">
+			    	<div align="center"><h4>COMENTARIOS DEL EVALUADO</h4></div>
+			        <div align="center">{{ form_widget(formulario.comentariosupervisado, { 'attr': {'class': 'form-control2'} }) }}</div>
+				    <div class="alert-danger" align="center">{{ form_errors(formulario.comentariosupervisado) }}</div>
+			    </div>
+			<div class="form-group">
+				<div hidden ="hidden">{{ form_widget(formulario.fechaevaluado, { 'attr': {'class': 'form-control'} }) }}</div>
+				<div hidden ="hidden" class="alert-danger" align= "center">{{ form_errors(formulario.fechaevaluado) }}</div>
+		    </div>
+		    </div>	    
+			<br>
+		    <div class="row" align="center">
+				<input class="btn btn-primary" type="submit" value="Guardar" />
+			</div>
+
+			{{ form_end(formulario) }}
+
+			{% endif %}
+
+		{% endif %}
+
+
+{#
+	<div class="form-group">
+		<div hidden ="hidden">{{ form_widget(form.evaluacion.fecha, { 'attr': {'class': 'form-control'} }) }}</div>
+		<div hidden ="hidden" class="alert-danger" align= "center">{{ form_errors(form.evaluacion.fecha) }}</div>
+    </div>
+
+<div class="row">
+	<input id="botonGuardar" class="btn btn-primary" type="submit" value="Guardar" />
+	
+</div>
+
+{{ form_end(form) }}
+#}
+
+
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('js/evaluacion.js') }}"></script>
+{% endblock %}

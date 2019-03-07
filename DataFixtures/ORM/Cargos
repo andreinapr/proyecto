@@ -1,0 +1,88 @@
+<?php
+namespace cufm\SedaBundle\DataFixtures\ORM;
+
+use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
+use cufm\SedaBundle\Entity\Cargo;
+
+class Cargos implements FixtureInterface
+{
+	public function load(ObjectManager $manager)
+	{
+		$cargos = array(
+						array('denominacion' =>'Bachiller I'),
+			array('denominacion' =>'Bachiller II'),
+			array('denominacion' =>'Bachiller III'),
+			array('denominacion' =>'Técnico I'),
+			array('denominacion' =>'Técnico II'),
+			array('denominacion' =>'Profesional I'),
+			array('denominacion' =>'Profesional II'),
+			array('denominacion' =>'Profesional III'),
+			array('denominacion' =>'Director(a)'),
+			array('denominacion' =>'Jefe(a) (E) de Secretaria'),
+			array('denominacion' =>'Jefe(a) (E) de OficinaConsultoría Jurídica'),
+			array('denominacion' =>'Jefe(a) (E) de OficinaSeguridad Integral, Ambiente y Salud en el Trabajo'),
+			array('denominacion' =>'Jefe(a) (E) de OficinaAtención a Personas con Discapacidad'),
+			array('denominacion' =>'Jefe(a) (E) de Oficinade Planificación y Desarrollo Institucional'),
+			array('denominacion' =>'Coordinador(a) (E) Planificación y Presupuesto'),
+			array('denominacion' =>'Coordinador(a) (E) Organización y Sistemas'),
+			array('denominacion' =>'Jefe(a) (E) de Oficinade Gestión Del Talento Humano'),
+			array('denominacion' =>'Coordinador(a) (E) de Captación y Selección'),
+			array('denominacion' =>'Coordinador(a) (E) de  Registro, Clasificación y Egresos'),
+			array('denominacion' =>'Coordinador(a) (E) de Formación, Evaluación y Desarrollo'),
+			array('denominacion' =>'Coordinador(a) (E) de Administración y Remuneración'),
+			array('denominacion' =>'Coordinador(a) (E) de Bienestar Social'),
+			array('denominacion' =>'Jefe(a) (E) de Oficinade Tecnología de Información y Comunicación'),
+			array('denominacion' =>'Coordinador(a) (E) de Desarrollo de Sistemas E Información'),
+			array('denominacion' =>'Coordinador(a) (E) de Plataforma Tecnológica y Telecomunicaciones'),
+			array('denominacion' =>'Coordinador(a) (E) de Soporte Técnico Y/A Usuarios'),
+			array('denominacion' =>'Subdirector(a) Académica'),
+			array('denominacion' =>'Coordinador(a) (E) Apoyo Docente'),
+			array('denominacion' =>'Coordinador(a) (E) Misión Sucre'),
+			array('denominacion' =>'Coordinador(a) (E) Planificación Académica'),
+			array('denominacion' =>'Jefe(a) (E) División Académica'),
+			array('denominacion' =>'Coordinador(a) (E) de Carreras'),
+			array('denominacion' =>'Coordinador(a) (E) de Programas Nacionales de Formación'),
+			array('denominacion' =>'Coordinador(a) (E) de Servicio Comunitario'),
+			array('denominacion' =>'Coordinador(a) (E) Trabajo de Grado y Pasantías'),
+			array('denominacion' =>'Coordinador(a) (E) de Documentación E Información'),
+			array('denominacion' =>'Coordinador(a) (E) de Documentación E Información (Turno Mañana)'),
+			array('denominacion' =>'Coordinador(a) (E) de Documentación E Información (Turno Tarde)'),
+			array('denominacion' =>'Jefe(a) (E) División de Investigación y Postgrado'),
+			array('denominacion' =>'Coordinador(a) (E) de Investigación'),
+			array('denominacion' =>'Coordinador(a) (E) de Postgrado'),
+			array('denominacion' =>'Jefe(a) (E) División de Desarrollo Estudiantil'),
+			array('denominacion' =>'Coordinador(a) (E) de Orientación y Asesoría Educativa'),
+			array('denominacion' =>'Coordinador(a) (E) de Calidad de Vida Al Estudiante'),
+			array('denominacion' =>'Jefe(a) (E) División de Interacción Social'),
+			array('denominacion' =>'Coordinador(a) (E) de Vinculación Con La Comunidad'),
+			array('denominacion' =>'Coordinador(a) (E) de Promoción y Difusión Cultural'),
+			array('denominacion' =>'Coordinador(a) (E) de Comunicación'),
+			array('denominacion' =>'Coordinador(a) (E) de Deporte'),
+			array('denominacion' =>'Jefe(a) (E) División de Control de Estudios'),
+			array('denominacion' =>'Coordinador(a) (E) de Ingreso'),
+			array('denominacion' =>'Coordinador(a) (E) de Prosecución y Egreso'),
+			array('denominacion' =>'Coordinador(a) (E) de Evaluación'),
+			array('denominacion' =>'Subdirector(a) Administrativa'),
+			array('denominacion' =>'Coordinador(a) (E) Archivo Central y Correspondencia'),
+			array('denominacion' =>'Jefe(a) (E) División de Administración'),
+			array('denominacion' =>'Coordinador(a) (E) de Adquisición y Suministros'),
+			array('denominacion' =>'Coordinador(a) (E) de Contabilidad'),
+			array('denominacion' =>'Coordinador(a) (E) de Habilitaduría'),
+			array('denominacion' =>'Coordinador(a) (E) de Bienes Nacionales'),
+			array('denominacion' =>'Coordinador(a) (E) de Almacén General'),
+			array('denominacion' =>'Jefe(a) (E) División de Mantenimiento y Servicios'),
+			array('denominacion' =>'Coordinador(a) (E) de Operaciones'),
+			array('denominacion' =>'Coordinador(a) (E) de Transporte'),
+			array('denominacion' =>'Coordinador(a) (E) de Reproducción'),
+
+		);
+	
+	foreach ($cargos as $cargo) {
+		$entidad = new Cargo();
+		$entidad->setDenominacion($cargo['denominacion']);
+		$manager->persist($entidad);
+	}
+		$manager->flush();
+	}
+}

@@ -1,0 +1,300 @@
+{% extends 'SedaBundle::layout.html.twig' %}
+
+
+{% block contenido %}
+	<div class="class row">
+			<h3 align="center">EVALUACION DE EFICIENCIA PERSONAL OBRERO</h3>
+	</div>
+{#
+{{ formulario.evaluado | ld}}
+{{ evaluacion | ld}}
+#}
+	{{ form_start(formulario, { 'attr': {'novalidate': 'novalidate', 'class': 'form-inline', 'id': 'evaluacionObreros'} }) }}
+	    {{ form_errors(formulario) }}
+
+		<div class="row">
+			<div class="alert-danger" align= "center">{{ error }}</div>
+		</div>
+		</br>
+	    <div class="row" align="center">
+		    <div class="form-group">
+		    	<div>{{ form_label(formulario.evaluado, 'Personal') }}</div>	
+		        <div>{{ form_widget(formulario.evaluado, { 'attr': {'class': 'form-control'} }) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.evaluado) }}</div>
+		    </div>
+
+		    <div class="form-group">
+		    	<div>{{ form_label(formulario.periodo, 'Periodo', { 'attr': {'class': 'radio'}}) }}	</div>
+		        {{ form_widget(formulario.periodo, { 'attr': {'class': 'radio'}}) }}
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.periodo) }}</div>        
+		    </div>
+
+		    <div class="form-group">
+		    	<div>{{ form_label(formulario.ano, 'Año') }}</div>	
+		        <div>{{ form_widget(formulario.ano, { 'attr': {'class': 'form-control'} }) }}</div>
+		        <div class="alert-danger" align= "center">{{ form_errors(formulario.ano) }}</div>
+		    </div>
+	    </div>
+	    <br>
+
+
+
+
+<!-- factores -->
+
+		<h4 align="">PARTE III</h4>
+		<div class="row">
+			<table class="table table-striped" >
+				<thead>
+					<tr>
+						<th>Factores de Evaluacion Personal Obrero</th>
+						<th>Valor</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td width="80%">1.- CALIDAD DE TRABAJO: Realiza las tareas con precisión, pulcritud, limpieza; Logrando cumplir los parametros establecidos.</td>
+						<td width="20%" align = "center">
+							<div class="form-group">
+							{{ form_widget(formulario.factoresEvaluacion1, { 'attr': {'class': 'form-control'} }) }}
+					    	<div class="alert-danger" align= "center">{{ form_errors(formulario.factoresEvaluacion1) }}</div>
+				    		</div>	
+						</td>
+					</tr>
+					<tr>
+						<td width="80%">2.- CANTIDAD DE TRABAJO: Cumplimiento completo del trabajo asignado, volumen producido según metas, tiempo, materiales o herramientas disponibles.</td>
+						<td width="20%" align = "center">
+							{{ form_widget(formulario.factoresEvaluacion2, { 'attr': {'class': 'form-control'} }) }}
+					    	<div class="alert-danger" align= "center">{{ form_errors(formulario.factoresEvaluacion2) }}</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="80%">3.- CUMPLIMIENTO DE NORMAS: Cumplimiento de los reglamentos , normas y procedimientos, acatamiento de normas especificas de trabajo.</td>
+						<td width="20%" align = "center">
+							{{ form_widget(formulario.factoresEvaluacion3, { 'attr': {'class': 'form-control'} }) }}
+					    	<div class="alert-danger" align= "center">{{ form_errors(formulario.factoresEvaluacion2) }}</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="80%">4.- HABITOS DE SEGURIDAD: Aplica las normas de seguridad y preserva la integridad personal. Usa la dotación asignada, uniformes o implementos de protección.</td>
+						<td width="20%" align = "center">
+							{{ form_widget(formulario.factoresEvaluacion4, { 'attr': {'class': 'form-control'} }) }}
+					    	<div class="alert-danger" align= "center">{{ form_errors(formulario.factoresEvaluacion4) }}</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="80%">5.- INTERES POR EL TRABAJO: Esmero y dedicación manifestada en la ejecución de las tareas asignadas.</td>
+						<td width="20%" align = "center">
+							{{ form_widget(formulario.factoresEvaluacion5, { 'attr': {'class': 'form-control'} }) }}
+					    	<div class="alert-danger" align= "center">{{ form_errors(formulario.factoresEvaluacion5) }}</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="80%">6.- COOPERACIÓN: Capacidad para trabajar con otros y colaborar en forma armoniosa con sus compañeros y supervisores sin descuidar el cumplimiento de sus deberes.</td>
+						<td width="20%" align = "center">
+							{{ form_widget(formulario.factoresEvaluacion6, { 'attr': {'class': 'form-control'} }) }}
+					    	<div class="alert-danger" align= "center">{{ form_errors(formulario.factoresEvaluacion6) }}</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="80%">7.-MANEJO DE BIENES Y EQUIPOS: Cuidado con el manejo de los equipos, herramientas y maquinarias que le son asignados al trabajador.</td>
+						<td width="20%" align = "center">
+							{{ form_widget(formulario.factoresEvaluacion7, { 'attr': {'class': 'form-control'} }) }}
+					    	<div class="alert-danger" align= "center">{{ form_errors(formulario.factoresEvaluacion7) }}</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="80%">8.-ATENCIÓN AL PÚBLICO: Disposición para prestar servicios al personal interno y público en general, en forma cortés, diligente y satisfactoria.</td>
+						<td width="20%" align = "center">
+							{{ form_widget(formulario.factoresEvaluacion8, { 'attr': {'class': 'form-control'} }) }}
+					    	<div class="alert-danger" align= "center">{{ form_errors(formulario.factoresEvaluacion8) }}</div>
+						</td>
+					</tr>															
+				</tbody>
+			</table>
+		</div>
+
+	<!-- factores Surpervision -->
+
+		<div class="row">
+			<table class="table table-striped" >
+				<thead>
+					<tr>
+						<th>Personal Obrero con Tareas de Supervisión</th>
+						<th>Valor</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td width="75%">1.- CALIDAD DE TRABAJO: Realiza las tareas con precisión, pulcritud, limpieza; Logrando cumplir los parametros establecidos.</td>
+						<td width="25%" align = "center">
+							<div class="form-group">
+							<div>{{ form_widget(formulario.factoresSupervision1, { 'attr': {'class': 'form-control', 'required':'false'} }) }}</div>
+					    	<div class="alert-danger" align= "center">{{ form_errors(formulario.factoresSupervision1) }}</div>
+				    		</div>	
+						</td>
+					</tr>
+					<tr>
+						<td width="75%">2.- CANTIDAD DE TRABAJO: Cumplimiento completo del trabajo asignado, volumen producido según metas, tiempo, materiales o herramientas disponibles.</td>
+						<td width="25%" align = "center">
+							<div>{{ form_widget(formulario.factoresSupervision2, { 'attr': {'class': 'form-control'} }) }}</div>
+					    	<div class="alert-danger" align= "center">{{ form_errors(formulario.factoresSupervision2) }}</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="75%">3.- CUMPLIMIENTO DE NORMAS: Cumplimiento de los reglamentos , normas y procedimientos, acatamiento de normas especificas de trabajo.</td>
+						<td width="25%" align = "center">
+							<div>{{ form_widget(formulario.factoresSupervision3, { 'attr': {'class': 'form-control'} }) }}</div>
+					    	<div class="alert-danger" align= "center">{{ form_errors(formulario.factoresSupervision2) }}</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="75%">4.- HABITOS DE SEGURIDAD: Aplica las normas de seguridad y preserva la integridad personal. Usa la dotación asignada, uniformes o implementos de protección.</td>
+						<td width="25%" align = "center">
+							<div>{{ form_widget(formulario.factoresSupervision4, { 'attr': {'class': 'form-control'} }) }}</div>
+					    	<div class="alert-danger" align= "center">{{ form_errors(formulario.factoresSupervision4) }}</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+<!-- Parte IV -->
+		<br>
+		<h4 align="">PARTE IV</h4>
+		<div class="row">
+			<table class="table table-bordered" >
+				<tr >
+					<td width="15%">EXCELENTE</td>
+					<td width="5%">
+						<div>{{ form_widget(formulario.totalExcelente, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '1'} }) }}</div>
+			    		<div class="alert-danger" align= "center">{{ form_errors(formulario.totalExcelente) }}</div>
+					</td>
+					<td width="15%">MUY BUENO</td>
+					<td width="5%">
+						<div>{{ form_widget(formulario.totalMuybueno, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '1'} }) }}</div>
+			    		<div class="alert-danger" align= "center">{{ form_errors(formulario.totalMuybueno) }}</div>						
+					</td>
+					<td width="15%">BUENO</td>
+					<td width="5%">
+						<div>{{ form_widget(formulario.totalBueno, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '1'} }) }}</div>
+			    		<div class="alert-danger" align= "center">{{ form_errors(formulario.totalBueno) }}</div>
+					</td>
+					<td width="15%">REGULAR</td>
+					<td width="5%">
+						<div>{{ form_widget(formulario.totalRegular, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '1'} }) }}</div>
+			    		<div class="alert-danger" align= "center">{{ form_errors(formulario.totalRegular) }}</div>						
+					</td>
+					<td width="15%">DEFICIENTE</td>
+					<td width="5%">
+						<div>{{ form_widget(formulario.totalDeficiente, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '1'} }) }}</div>
+			    		<div class="alert-danger" align= "center">{{ form_errors(formulario.totalDeficiente) }}</div>						
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" width="20%">
+						<p>Contribuye permanentemente encima de los asignado para lograr las tareas de manera destacada y por encima del resto de los trabajadores.</p>
+					</td>
+					<td colspan="2" width="20%">
+						<p>Contribuye al logro de los resultados, superando frecuentemente lo esperado.</p>
+					</td>
+					<td colspan="2" width="20%">
+						<p>Actuación que coincide con las exigencias del puesto, cumple regularmente con el trabajo asignado.</p>
+					</td>
+					<td colspan="2" width="20%">
+						<p>Actuación que satisface las exigencias mínimas del puesto. Requiere mejora en aspectos básicos de su trabajo. Debe mejorar algunos aspectos importantes de su trabajo.</p>
+					</td>
+					<td colspan="2" width="20%">
+						<p>Actuación por debajo del mínimo de los requerimientos del puesto. No se observa contribución al logro de los resultados. Constantemente comete errores y omisiones.</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+<!-- Parte V -->
+		<br>
+		<h4 align="">PARTE V</h4>
+		<div class="row" align="center">
+			<h4>Comentario sobre el desempeño de actuación. <br> Resuma el desempeño del trabajador, señalando los aspectos mas relevantes.</h4>
+			<div class="form-group">
+				<div>{{ form_widget(formulario.comentarioDesempeno, { 'attr': {'class': 'form-control obrero' } }) }}</div>
+				<div class="alert-danger" align= "center">{{ form_errors(formulario.comentarioDesempeno) }}</div>
+		    </div>	
+		</div>	
+
+		<div class="row" align="center">
+			<h4>Indique los aspectos a mejorar y áreas de capacitación requeridas:</h4>
+			<div class="form-group">
+				<div>{{ form_widget(formulario.aspectosMejorar, { 'attr': {'class': 'form-control obrero'} }) }}</div>
+				<div class="alert-danger" align= "center">{{ form_errors(formulario.aspectosMejorar) }}</div>
+		    </div>	
+		</div>
+
+<!-- Parte VI -->
+		<br>
+		<h4 align="">PARTE VI</h4>
+		<div class="row" align="center">
+			<h4>Indique los aspectos significativos tratados durante la entrevista</h4>
+			<div class="form-group">
+				<div>{{ form_widget(formulario.aspectosSignificativos, { 'attr': {'class': 'form-control obrero'} }) }}</div>
+				<div class="alert-danger" align= "center">{{ form_errors(formulario.aspectosSignificativos) }}</div>
+		    </div>	
+		</div>
+
+
+
+
+<!-- Parte VII -->
+
+{#
+		<div class="row" align="center">
+			<h4>Observación</h4>
+			<div class="form-group">
+				<div>{{ form_widget(formulario.observacion, { 'attr': {'class': 'form-control obrero'} }) }}</div>
+				<div class="alert-danger" align= "center">{{ form_errors(formulario.observacion) }}</div>
+		    </div>	
+		</div>
+#}
+
+		<div class="form-group" >
+			<div >{{ form_widget(formulario.total, { 'attr': {'class': 'form-control'} }) }}</div>
+			<div class="alert-danger" align= "center">{{ form_errors(formulario.total) }}</div>
+	    </div>	
+
+<!-- SOLO PARA OGTH -->
+
+{#
+		<div class="col-md-6">
+			<h4 align="center">RANGO DE EVALUACION</h4>
+			<h3 id="actuacion" class="text-primary" align="center"></h3>
+		</div>
+
+		<div class="col-md-6">
+			<h4 align="center">PUNTAJE OBTENIDO</h4>
+			<div class="form-group" >
+				<div >{{ form_widget(formulario.total, { 'attr': {'class': 'form-control'} }) }}</div>
+				<div class="alert-danger" align= "center">{{ form_errors(formulario.total) }}</div>
+		    </div>	
+		</div>
+
+		<div class="row">
+			<h4>Observación</h4>
+			<div class="form-group">
+				<div>{{ form_widget(formulario.observacionOGTH, { 'attr': {'class': 'form-control'} }) }}</div>
+				<div class="alert-danger" align= "center">{{ form_errors(formulario.observacionOGTH) }}</div>
+		    </div>	
+		</div>
+#}
+
+		<br>
+		<div class="row" align="center">
+			<input class="btn btn-primary" type="submit" value="Guardar" />&nbsp;&nbsp;
+			<button class="btn btn-danger" type="reset" value="Reset">Limpiar</button>
+		</div>
+
+
+	{{ form_end(formulario) }}	    
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('js/evaluacionobrero.js') }}"></script>
+{% endblock %}

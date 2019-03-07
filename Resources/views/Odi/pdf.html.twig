@@ -1,0 +1,133 @@
+{# {% extends 'SedaBundle::layout.html.twig' %} #}
+<meta charset="UTF-8" />
+        <style>
+            html, table, th,tr,td {
+            	font-family: sans-serif;
+                font-size: 14pt;
+            }
+            
+            div {
+            	font-family: sans-serif;
+                font-size: 14pt;
+            }
+        </style>
+
+{% block contenido %}
+
+{# {{ odis | ld }} #}
+
+<div class="row" align = "center">
+	<img src="http://localhost/seda/web/img/cintillo201.png" >
+</div>
+
+<div class="row" align = "center" >
+	<h2>ESTABLECIMIENTO Y SEGUIMIENTO DE LOS OBJETIVOS DE DESEMPEÑO INDIVIDUAL (O.D.I.)	</h2>
+</div>
+<div class="row">
+{% for odi in odis %}
+
+	<table style="width: 1424px;">
+		<tr>
+			<td align = "left">
+				{% if odi.periodo == 1 %}
+				    SEMESTRE: I Semestre
+				{% endif %}
+				{% if odi.periodo == 2 %}
+				    SEMESTRE: II Semestre
+				{% endif %}						
+			</td>
+			
+			<td align = "right">AÑO: {{ odi.ano }}</td>
+		</tr>
+	</table>
+	<table class="table table-striped" border=1 cellspacing=0 cellpadding=2 bordercolor="000000"  style="width: 1424px;">
+
+		<thead>
+			<tr>
+				<th colspan="4" bgcolor="#aba8a8">DATOS DEL EVALUADO</th>
+			</tr>
+			<tr>
+				<th>APELLIDOS Y NOMBRES</th>
+				<th>CEDULA DE IDENTIDAD</th>
+				<th>CARGO</th>
+				<th>UBICACION ADMINISTRATIVA</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr>
+					<td align = "center" style="width: 404px;">{{ odi.usuario  | upper }}</td>
+					<td align = "center" style="width: 234px;">{{ odi.usuario.cedula }}</td>
+					<td align = "center" style="width: 350px;">{{ odi.usuario.cargo  | upper }}</td>
+					<td align = "center" style="width: 436px;">{{ odi.usuario.dependencia  | upper }}</td>
+				</tr>
+		</tbody>
+	</table>		
+<!-- <br> -->				
+	<table class="table table-striped" border=1 cellspacing=0 cellpadding=2 bordercolor="000000" style="height:480px; width: 1424px;">
+		<thead>
+			<tr>
+				<th colspan="5" bgcolor="#aba8a8">ESTABLECIMEINTO Y REVISION DE LOS (O.D.I.)</th>
+			</tr>
+			<tr>
+				<th>OBJETIVOS DE DESEMPEÑO INDIVIDUAL</th>
+				<th>PESO</th>
+				<th>PRIMERA REVISIÓN</th>
+				<th>SEGUNDA REVISIÓN</th>
+				<th>TERCERA REVISIÓN</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for objetivo in odi.objetivos %}
+				<tr>
+					<td style="width: 882px;" align = "justify">{{ objetivo.objetivo }}</td>
+					<td style="width: 122px;" align = "center">{{ objetivo.peso }}</td>
+					<td style="width: 140px;" align = "center">{{ objetivo.primeraRevision|date('d/m/Y') }}</td>
+					<td style="width: 140px;" align = "center">{{ objetivo.segundaRevision|date('d/m/Y') }}</td>
+					<td style="width: 140px;" align = "center">{{ objetivo.terceraRevision|date('d/m/Y') }}</td>
+				</tr>
+			{% else %}
+			<tr>
+			  <td>
+			  <h2 >No existen registros de ODIS1</h2>
+			  </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endfor %}
+</br>
+	<table class="table table-striped" border=1 cellspacing=0 cellpadding=2 bordercolor="000000"  style="width: 1424px;">
+
+		<thead>
+			<tr>
+				<th colspan="4" bgcolor="#aba8a8">FIRMAS</th>
+			</tr>
+			<tr>
+				<th>EVALUADO</th>
+				<th>EVALUADOR</th>
+				<th>FECHA</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr>
+					<td align = "center" style="width: 33%;">&nbsp;</td>
+					<td align = "center" style="width: 33%;">&nbsp;</td>
+					<td align = "center" style="width: 33%;">&nbsp;</td>
+				</tr>
+				<tr>
+					<td align = "center" style="width: 33%;">&nbsp;</td>
+					<td align = "center" style="width: 33%;">&nbsp;</td>
+					<td align = "center" style="width: 33%;">&nbsp;</td>
+				</tr>
+				<tr>
+					<td align = "center" style="width: 33%;">&nbsp;</td>
+					<td align = "center" style="width: 33%;">&nbsp;</td>
+					<td align = "center" style="width: 33%;">&nbsp;</td>
+				</tr>								
+		</tbody>
+	</table>
+
+
+</div>
+{% endblock %}

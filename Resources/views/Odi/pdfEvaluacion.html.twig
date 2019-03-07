@@ -1,0 +1,638 @@
+{# {% extends 'SedaBundle::layout.html.twig' %} #}
+
+
+<meta charset="UTF-8" />
+<style>
+    html {
+    	font-family: sans-serif;
+        font-size: 14pt;
+        
+
+    }
+    table{
+    	width: 1424px;
+    }
+    table, th,tr,td{
+    	
+    	border: 1px solid black;
+    }
+    div {
+    	font-family: sans-serif;
+        font-size: 14pt;
+    }
+ 	div.saltopagina{ 
+    	display:block; 
+      	page-break-before:always;
+   	}    
+</style>
+
+
+{% block contenido %}
+
+{# Objetivos
+
+
+{{ odi.evaluacion[0] | ld }}
+#}
+<div class="saltopagina">
+<div class="row" align = "center">
+	<img src="http://localhost/seda/web/img/cintillo201.png" >
+</div>
+
+<H2 align="center">EVALUACION DEL DESEMPEÑO / {% if odi.usuario.nivel == 1 %}
+					    							NIVEL DE APOYO
+											   {% endif %}
+											   {% if odi.usuario.nivel == 2 %}
+					    							NIVEL TÉCNICO PROFESIONAL
+											   {% endif %}	
+											   {% if odi.usuario.nivel == 3 %}
+					    							NIVEL SUPERVISORIO
+											   {% endif %}
+</H2>
+
+<div>
+<H3 align="center">PERIODO EVALUADO:  Desde:{% if odi.periodo == 1 %}
+					    01/01/{{ odi.ano }}   Hasta: 30/06/{{ odi.ano }}
+					{% endif %}
+					{% if odi.periodo == 2 %}
+					    01/07/{{ odi.ano }}   Hasta: 31/12/{{ odi.ano }}
+					{% endif %}						
+					
+</H3>
+</div>
+
+<div class="class row">
+		<H2 align="center">SECCIÓN A</H2>
+		<H2 align="center">DATOS DE IDENTIFICACIÓN</H2>
+</div>
+{#
+{{ form_start(form, { 'attr': {'novalidate': 'novalidate', 'class': 'form-inline', 'id': 'evaluacion'} }) }}
+		    {{ form_errors(form) }}
+
+{{ super | ld }}
+{{ mediato | ld }}
+#}
+
+<div class="row">
+	
+	<table class="table table-striped" cellspacing=0 cellpadding=2>
+		<thead>
+			<tr>
+				<th colspan="3" bgcolor="#aba8a8">DATOS DEL EVALUADO</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="3">Apellidos y Nombres:  {{ odi.usuario | upper  }}</td>
+			</tr>
+			<tr>
+				<td>Cédula de Identidad:  {{ odi.usuario.cedula }}</td>
+				<td colspan="2">Código Nómina:  </td>
+			</tr>
+			<tr>
+				<td>Titulo del cargo:  {{ odi.usuario.cargo }}</td>
+				<td>Grado:  </td>
+				<td>Código de Clase:  </td>
+			</tr>
+			<tr>
+				<td colspan="3">Ubicación Administrativa: {{ odi.usuario.dependencia | upper  }}</td>
+			</tr>
+
+		</tbody>
+	</table>
+{# supervisor #}
+<br>
+	<table class="table table-striped" cellspacing=0 cellpadding=2>
+		<thead>
+			<tr>
+				<th colspan="3" bgcolor="#aba8a8">DATOS DEL EVALUADOR</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="3">Apellidos y Nombres:  {{ super | upper  }}</td>
+			</tr>
+			<tr>
+				<td>Cédula de Identidad:  {{ super.cedula }}</td>
+				<td colspan="2">Código Nómina:  </td>
+			</tr>
+			<tr>
+				<td colspan="3">Titulo del cargo:  {{ super.cargo }}</td>
+			</tr>
+			<tr>
+				<td colspan="3">Ubicación Administrativa: {{ super.dependencia | upper  }}</td>
+			</tr>
+
+		</tbody>
+	</table>
+{# mediato #}
+<br>
+	<table class="table table-striped" cellspacing=0 cellpadding=2>
+		<thead>
+			<tr>
+				<th colspan="3" bgcolor="#aba8a8">DATOS DEL SUPERVISOR DEL EVALUADOR</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="3">Apellidos y Nombres:  {{ mediato | upper  }}</td>
+			</tr>
+			<tr>
+				<td>Cédula de Identidad:  {{ mediato.cedula }}</td>
+				<td colspan="2">Titulo del Cargo:  {{ mediato.cargo }}</td>
+			</tr>
+		</tbody>
+	</table>
+<br>
+<ul>
+	<li>EL PRESENTE INSTRUMENTO DEBE SER COMPLETADO POR EL SUPERVISOR INMEDIATO  EN BOLÍGRAFO (LETRA  DE IMPRENTA) O EN COMPUTADOR, SIN CORRECCIONES NI ENMIENDAS.</li>
+	<li>PARA  COMPLETAR CADA  SECCIÓN SE RECOMIENDA  LEER DETENIDAMENTE LAS INSTRUCCIONES CORRESPONDIENTES.</li>
+</ul>
+
+
+</div>
+<div class="saltopagina">
+<div class="row" align = "center">
+	<img src="http://localhost/seda/web/img/cintillo201.png" >
+</div>
+<div class="class row">
+		<H2 align="center">SECCIÓN B</H2>
+		<H2 align="center">ESTABLECIMIENTO Y EVALUACIÓN DE LOS OBJETIVOS DE DESEMPEÑO INDIVIDUAL</H2>
+		<h3 align="center">En esta sección se establecen los Objetivos de Desempeño Individual (O.D.I.) que el funcionario debe cumplir en el periodo a evaluar.</h3>
+</div>
+<br>
+<div class="row">
+	
+		<table class="table table-striped" cellspacing=0 cellpadding=2  style="height: 600px;">
+			<thead>
+				<tr>
+					<th rowspan="2" bgcolor="#aba8a8">Objetivos de Desempeño Individual</th>
+					<th rowspan="2" bgcolor="#aba8a8">Peso</th>
+					<th colspan="5" bgcolor="#aba8a8">Rangos</th>
+					<th rowspan="2" bgcolor="#aba8a8">Peso x Rangos</th>
+				</tr>
+				<tr>
+					<th bgcolor="#aba8a8">1</th>
+					<th bgcolor="#aba8a8">2</th>
+					<th bgcolor="#aba8a8">3</th>
+					<th bgcolor="#aba8a8">4</th>
+					<th bgcolor="#aba8a8">5</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% set i = 0 %}
+			{% for objetivo in odi.objetivos %}
+				<tr>
+					<td width="60%">{{ objetivo.objetivo }}</td>
+					<td width="5%" align = "center">
+		        		<div>{{ odi.objetivos[i].peso }}</div>
+					</td>					
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.objetivos[i].rango == 1 %}
+								X
+							{% endif %}
+		        		</div>
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.objetivos[i].rango == 2 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.objetivos[i].rango == 3 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.objetivos[i].rango == 4 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.objetivos[i].rango == 5 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+
+					<td width="10%" align = "center">
+		        		<div>{{ odi.objetivos[i].pesoxrango }}</div>
+					</td>
+				</tr>
+			{% set i = i + 1 %}	
+			{% endfor %}
+			</tbody>
+			<tfoot>	
+				<tr>
+					<td></td>
+					<td align = "center">50</td>
+					<td align = "center" colspan="5">Total</td>
+					<td align = "center">
+		        		<div>{{ odi.evaluacion[0].totalobjetivos }}</div>
+					</td>
+			
+				</tr>
+			</tfoot>
+			
+		</table>
+</div>
+
+</div>
+
+{# Competencias 
+
+
+{{ odi.evalcompetencia[1] | ld }}
+#}
+
+
+<div class="saltopagina">
+<div class="row" align = "center">
+	<img src="http://localhost/seda/web/img/cintillo201.png" >
+</div>
+<div class="class row">
+		<H2 align="center">SECCIÓN C</H2>
+		<H2 align="center">EVALUACIÓN DE COMPETENCIAS</H2>
+		<h3 align="center">En esta sección se ponderan las competencias en relación al cargo y se evalúan de acuerdo al grado en que están presentes en el evaluado.</h3>
+</div>
+<div class="row">
+	
+		<table class="table table-striped" cellspacing=0 cellpadding=2 style="height: 600px;">
+			<thead>
+				<tr>
+					<th rowspan="2" bgcolor="#aba8a8">Competencias</th>
+					<th rowspan="2" bgcolor="#aba8a8">Peso</th>
+					<th colspan="5" bgcolor="#aba8a8">Rangos</th>
+					<th rowspan="2" bgcolor="#aba8a8">Peso x Rangos</th>
+				</tr>
+				<tr>
+					<th bgcolor="#aba8a8">1</th>
+					<th bgcolor="#aba8a8">2</th>
+					<th bgcolor="#aba8a8">3</th>
+					<th bgcolor="#aba8a8">4</th>
+					<th bgcolor="#aba8a8">5</th>
+				</tr>
+			</thead>
+			<tbody>
+
+			{% for i in 0..7  %}
+				<tr>
+					<td width="60%">{{ odi.evalcompetencia[i].competencia.descripcion | raw }}</td>
+					<td width="10%" align = "center">
+		        		<div>{{ odi.evalcompetencia[i].peso }}</div>
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.evalcompetencia[i].rango == 1 %}
+								X
+							{% endif %}
+		        		</div>
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.evalcompetencia[i].rango == 2 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.evalcompetencia[i].rango == 3 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.evalcompetencia[i].rango == 4 %}
+								X
+							{% endif %}
+		        		</div>
+
+					</td>
+					<td width="5%" align = "center">
+		        		<div>
+			        		{% if odi.evalcompetencia[i].rango == 5 %}
+								X
+							{% endif %}
+		        		</div>
+					</td>
+
+					<td width="10%" align = "center">
+		        		<div>{{ odi.evalcompetencia[i].pesoxrango }}</div>
+					</td>
+				</tr>
+
+			{% endfor %}
+			</tbody>
+			<tfoot>
+				<tr>
+					<td></td>
+					<td align = "center">50</td>
+					<td align = "center" colspan="5">Total</td>
+					<td align = "center">
+		        		<div>{{ odi.evaluacion[0].totalcompetencias }}</div>
+					</td>
+				</tr>
+			</tfoot>				
+		</table>
+</div>
+
+</div>
+
+
+{# Evaluacion 
+
+{{ evaluacion | ld }} 
+
+{{ formularioEvaluacion | ld }} 
+#}
+
+<div class="saltopagina">
+<div class="row" align = "center">
+	<img src="http://localhost/seda/web/img/cintillo201.png" >
+</div>
+<div class="class row">
+		<H2 align="center">SECCIÓN D</H2>
+		<H3 align="center">En esta sección se obtendrá el rango de actuación del evaluado.</H3>
+</div>
+
+<div class="row">
+<div class="col-md-1"></div>	
+<div class="col-md-4">
+	<table class="table table-striped" cellspacing=0 cellpadding=2 style="border: 1px solid #FFFFFF; ">
+		<thead>
+			<tr>
+				<th colspan = "2" width="40%">CALIFICACIÓN FINAL</th>
+				<th width="20%" style="border: 1px solid #FFFFFF;"></th>
+				<th width="40%" style="border: 1px solid #FFFFFF;">RANGO DE ACTUACION</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			<tr>
+				<td bgcolor="#aba8a8">TOTAL OBJETIVOS (SECCION "B")</td>
+				<td align="center">
+	        		<div>{{ odi.evaluacion[0].totalobjetivos }}</div>
+				</td>
+				<td style="border: 1px solid #FFFFFF;"></td>
+				<td rowspan="3" align="center" style="border: 1px solid #FFFFFF;">
+					<h3 >
+						{% if (odi.evaluacion[0].total >= 100) and (odi.evaluacion[0].total <= 179) %}
+						    MUY POR DEBAJO DE LO ESPERADO
+						{% elseif (odi.evaluacion[0].total >= 180) and (odi.evaluacion[0].total <= 259) %}
+							POR DEBAJO DE LO ESPERADO 
+						{% elseif (odi.evaluacion[0].total >= 260) and (odi.evaluacion[0].total <= 339) %}
+							DENTRO DE LO ESPERADO
+						{% elseif (odi.evaluacion[0].total >= 340) and (odi.evaluacion[0].total <= 419) %}
+							SOBRE LO ESPERADO
+						{% elseif (odi.evaluacion[0].total >= 420) and (odi.evaluacion[0].total <= 500) %}
+							DESEMPEÑO EXCEPCIONAL
+						{% endif %}				
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#aba8a8">TOTAL COMPETENCIAS (SECCION "C") </td>
+				<td align="center">
+	        		<div>{{ odi.evaluacion[0].totalcompetencias }}</div>
+				</td>
+				<td style="border: 1px solid #FFFFFF;"></td>
+
+			</tr>
+			<tr>
+				<td bgcolor="#aba8a8">PUNTAJE FINAL "B + C"</td>
+				<td align="center">
+	        		<div>{{ odi.evaluacion[0].total }}</div>
+				</td>
+				<td style="border: 1px solid #FFFFFF;"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="class row">
+		<H2 align="center">SECCIÓN E</H2>
+		<H3 align="center">En esta sección, exprese comentarios con respecto a los resultados de la evaluación del funcionario, así como las acciones a seguir para mejorar el desempeño. </H3>
+</div>
+<div class="row" align="center">
+	<div class="col-md-1"></div>	
+	<div class="col-md-10">
+		<table class="table table-striped" cellspacing=0 cellpadding=2 >
+			<thead>
+				<tr>
+					<th bgcolor="#aba8a8">COMENTARIOS DEL EVALUADOR</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="height: 400px;">
+						<p style=""> {{ odi.evaluacion[0].comentariosupervisor }}</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-1"></div>
+</div>
+
+
+<div class="saltopagina">
+<div class="row" align = "center">
+	<img src="http://localhost/seda/web/img/cintillo201.png" >
+</div>
+<div class="class row">
+		<H2 align="left">FIRMAS</H2>
+	
+</div>
+<br>
+<div>
+FECHA: Indique el día, mes y año en que se realizo la evaluación.<br>
+SUPERVISOR INMEDIATO: Firma del Evaluador. <br>
+JEFE INMEDIATO DEL SUPERVISOR: Firma el Jefe Inmediato del Supervisor.<br>
+<br>
+<strong>AL SER LLENADO POR EL EVALUADO:</strong><br>
+	El evaluado indicara en la casilla correspondiente su acuerdo o no acerca de los resultados de su evaluación.<br><br>
+	COMENTARIOS: <br>
+<ul>
+	<li>El evaluado podrá expresar cualquier observación adicional que considere pertinente sobre su evaluación.</li>
+	<li>En caso de que el evaluado manifieste desacuerdo con los resultados de la evaluación podrá presentarlo por escrito ante el Comité de Calificación de Servicios,     dentro de un lapso de cinco (5) días hábiles, contados a partir de fecha en que fue notificado de los resultados de la evaluación.</li>
+	<li>El evaluado deberá firmar en señal de haber sido notificado de los resultados de su evaluación. Sin que su firma implique su aceptación o no de los resultados.</li>
+</ul>
+
+</div>
+<br>
+<br>
+<br>
+<div>
+	<table cellspacing=0 cellpadding=2 style="border: 1px solid #FFFFFF;">
+		<tbody>
+			<tr>
+				<td width="40%" align="center" style="border-top: 1px solid #000000; border-left: 1px solid #FFFFFF; border-right: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF;">SUPERVISOR INMEDIATO</td>
+				<td width="20%" style="border: 1px solid #FFFFFF;"></td>
+				<td width="40%" align="center" style="border-top: 1px solid #000000; border-left: 1px solid #FFFFFF; border-right: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF;">JEFE MEDIATO DEL SUPERVISOR</td>
+			</tr>			
+		</tbody>
+	</table>
+</div>
+
+<br>
+<div align="right">FECHA  DE EVALUACIÓN:{{ odi.evaluacion[0].fecha|date('d/m/Y') }}</div>
+<br>
+<div>PARA SER LLENADO POR EL EVALUADO:</div>
+<div class="row">
+	
+	<div class="col-md-8" align="left">						
+		{% if odi.evaluacion[0].aprobacionevaluado == 1 %}
+		   ¿Esta de acuerdo? <strong>Si</strong>
+		{% else %}
+		    ¿Esta de acuerdo? <strong>No</strong>
+		{% endif %}	
+	</div>
+</div>	
+
+<div class="row" align="center">
+	<div class="col-md-1"></div>	
+	<div class="col-md-10">
+		<table class="table table-striped" cellspacing=0 cellpadding=2 >
+			<thead>
+				<tr>
+					<th bgcolor="#aba8a8">COMENTARIOS DEL EVALUADO</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="height: 120px;">
+						<p style=""> {{ odi.evaluacion[0].comentariosupervisado }}</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-1"></div>
+</div>			
+<br>
+<br>
+<br>
+<div>
+	<table cellspacing=0 cellpadding=2 style="border: 1px solid #FFFFFF;">
+		<tbody>
+			<tr>
+				<td width="40%" align="center" style="border-top: 1px solid #000000; border-left: 1px solid #FFFFFF; border-right: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF;">FIRMA DEL EVALUADO</td>
+				<td width="20%" style="border: 1px solid #FFFFFF;"></td>
+				<td width="40%" align="left" style="border-top: 1px solid #FFFFFF; border-left: 1px solid #FFFFFF; border-right: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF;">FECHA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/</td>
+			</tr>			
+		</tbody>
+	</table>
+</div>
+
+</div>
+
+{# Isntructivo N5#}
+
+{% if (odi.evaluacion[0].total >= 420) and (odi.evaluacion[0].total <= 500) %}
+
+<div class="saltopagina">
+<div class="row" align = "center">
+	<img src="http://localhost/seda/web/img/cintillo201.png" >
+
+		<H2 align="center">EVALUACIÓN DEL DESEMPEÑO / EXPOSICION DE MOTIVOS</H2>
+		<H3 align="center">ASIGNACION DEL RANGO  “EXCEPCIONAL”</H3>
+<div class="row">
+	
+	<table class="table table-striped" cellspacing=0 cellpadding=2>
+		<thead>
+			<tr>
+				<th colspan="4" bgcolor="#aba8a8">DATOS DEL EVALUADO</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="2">Apellidos y Nombres:  {{ odi.usuario | upper  }}</td>
+				<td colspan="2">Código Nómina:  </td>
+			</tr>
+			<tr>
+				<td colspan="2">Cédula de Identidad:  {{ odi.usuario.cedula }}</td>
+				<td colspan="2">Puntaje Total Obtenido (en números): {{ odi.evaluacion[0].total }} </td>
+			</tr>
+			<tr>
+				<td colspan="4">Titulo del cargo:  {{ odi.usuario.cargo }}</td>
+			</tr>
+			<tr>
+				<td>Ubicación Administrativa: {{ odi.usuario.dependencia | upper  }}</td>
+				<td>Periodo Evaluado: 
+				{% if odi.periodo == 1 %}
+				   1er Semestre {{ odi.ano }}
+				{% endif %}
+				{% if odi.periodo == 2 %}
+				    2do. Semestre {{ odi.ano }}
+				{% endif %}	</td> 
+
+				{% if odi.periodo == 1 %}
+					 <td>Desde: 01/01/{{ odi.ano }}</td>
+				     <td>Hasta: 30/06/{{ odi.ano }}</td>
+				{% endif %}
+				{% if odi.periodo == 2 %}
+					<td>Desde: 01/07/{{ odi.ano }}</td>
+				    <td>Hasta: 31/12/{{ odi.ano }}</td>
+				{% endif %}	
+				
+			</tr>
+
+		</tbody>
+	</table>
+	<br>
+
+</div>
+
+
+			<table class="table table-striped" cellspacing=0 cellpadding=2 style="height: 600px;">
+				<thead>
+					<tr>
+						<th colspan="3" bgcolor="#aba8a8">EXPOSICION DE MOTIVOS/ASIGNACION DEL RANGO EXCEPCIONAL</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="3">1-. Identifique los <strong>LOGROS ADICIONALES</strong> alcanzados, especifique  cual (es), cuando?  y como?</td>
+					</tr>
+					<tr>
+						<td colspan="3"align = "justify">{{ odi.evaluacion[0].logroAdicional }}</td>
+					</tr>
+					<tr>
+						<td colspan="3">2-.Especifique  el <strong>IMPACTO</strong> de los logros adicionales alcanzados para el Departamento, Dirección o  para la gestión especifica de la Institución.</td>
+					</tr>
+					<tr>
+						<td colspan="3" align = "justify">{{ odi.evaluacion[0].impacto }}</td>
+					</tr>
+					<tr>
+						<td colspan="3" >3-.Identifique las <strong>COMPETENCIAS INDIVIDUALES</strong> más resaltantes en el supervisado que le facilitaron el alcance de los logros adicionales.</td>
+					</tr>
+					<tr>
+						<td colspan="3" align = "justify">{{ odi.evaluacion[0].competenciasIndividual }}</td>
+					</tr>
+					<tr>
+						<td>Firma del Evaluado:</td>
+						<td>Firma del Evaluador:</td>
+						<td>Fecha:</td>
+					</tr>
+				</tbody>
+			</table>
+</div>
+	{% endif %}	
+
+{% endblock %}

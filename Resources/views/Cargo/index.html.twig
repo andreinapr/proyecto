@@ -1,0 +1,49 @@
+{% extends 'SedaBundle::layout.html.twig' %}
+
+{% block contenido %}
+
+{# {{ cargos | ld }} #}
+
+
+<div class="row">
+<div class="row">
+    <div class="alert-danger" align= "center">{{ eliminado }}</div>
+</div>          
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Denominación</th>
+                <th>Activo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cargo in cargos %}
+                <tr>
+                    <td align = "center">{{ cargo.id }}</td>
+                    <td align = "center">{{ cargo.denominacion }}</td>
+                    <td align = "center">
+                    {% if cargo.activo == 0 %}
+                        <td align="center">No</td>
+                    {% else %}
+                        <td align="center">Si</td>
+                    {% endif %}
+                    </td>
+                    <td align = "center">
+                        <a href="{{ path('Seda_cargos_editar', { 'id': cargo.id }) }}">Editar</a></br>
+                        <a href="{{ path('Seda_cargos_eliminar', { 'id': cargo.id }) }}">Eliminar</a></br>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                  <td>
+                  <h2 >No existen registros de Cargos</h2>
+                  </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

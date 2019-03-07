@@ -1,0 +1,10 @@
+cufm\SedaBundle\Entity\Role:
+    role_usuario:
+        name: Usuario
+        role: ROLE_USER
+    role_supervisor:
+        name: Supervisor
+        role: ROLE_BOSS
+    role_ogth:
+        name: OGTH
+        role: ROLE_OGTH

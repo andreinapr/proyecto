@@ -1,0 +1,63 @@
+<?php
+
+namespace cufm\SedaBundle\DataFixtures\ORM;
+
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
+use cufm\SedaBundle\Entity\Competencia;
+
+class Competencias extends AbstractFixture implements OrderedFixtureInterface
+{
+
+	/**
+    * {@inheritDoc}
+    */		
+	public function load(ObjectManager $manager)
+	{
+		$competencias = array(
+			array('descripcion' => '<strong>COMPROMISO  CON VALORES   ORGANIZACIONALES:</strong> Mide el grado de identificación y responsabilidad con los valores y cultura de la institución. Atiende mas a los intereses organizacionales que a las personales.','tipo' =>'1'),
+			array('descripcion' => '<strong>AUTO DESARROLLO:</strong> Mide la motivación para el mejoramiento continuo a través de estudios, cursos, lectura y cualquier otra actividad individual u organizacional que aseguren su evolución personal y profesional. ','tipo' => '1'),
+			array('descripcion' => '<strong>CALIDAD DE SERVICIO:</strong> Mide el grado en que los procesos de trabajo y las relaciones interpersonales reflejan el interés por satisfacer los requerimientos de los usuarios externos e internos ofreciéndoles el mejor servicio.  ','tipo' => '1'),
+			array('descripcion' => '<strong>COMUNICACIÓN:</strong> Mide la habilidad para recibir, comprender y transmitir en  forma oral o escrita ideas e información de manera que facilite la rápida comprensión, logrando una actitud positiva en cualquier situación de trabajo. ','tipo' => '1'),
+			array('descripcion' => '<strong>RESPONSABILIDAD SOBRE LOS RECURSOS:</strong> Mide el grado de responsabilidad del empleado por la conservación, uso y mantenimiento de los bienes materiales y equipos asignados a su área, con la finalidad de optimizar su utilidad y beneficio.','tipo' => '1'),
+			array('descripcion' => '<strong>ADECUACIÓN A LAS NORMAS DE LA ORGANIZACIÓN:</strong> Mide el grado en que el empleado cumple con las políticas, normas y procedimientos establecidos por la organización en cuanto a: apariencia personal, puntualidad, asistencia y otras normativas.','tipo' => '1'),
+			array('descripcion' => '<strong>RELACIONES INTERPERSONALES:</strong> Mide la habilidad del evaluado para interactuar en forma cordial, amable y colaboradora con sus superiores, compañeros de trabajo y usuarios tanto externo como internos, con la finalidad de mejorar y mantener un ambiente de trabajo armonioso.','tipo' => '1'),
+			array('descripcion' => '<strong>PRECISIÓN Y RAPIDEZ:</strong> Mide la destreza  para realizar la labor utilizando la menor cantidad de recursos y esfuerzo.','tipo' => '1'),
+			array('descripcion' => '<strong>COMPROMISO DE  VALORES ORGANIZACIONALES:</strong>  Mide el grado de identificación y responsabilidad con los valores y cultura de la institución. Atiende más a los intereses organizacionales que a los personales.','tipo' => '2'),
+			array('descripcion' => '<strong>AUTODESARROLLO:</strong> Mide la motivación para el mejoramiento continuo a través de estudios, cursos, lectura y cualquier otra actividad individual u organizacional que aseguren su evolución personal y profesional.','tipo' => '2'),
+			array('descripcion' => '<strong>CALIDAD DEL SERVICIO:</strong> Mide el grado en que los procesos de trabajo y las relaciones interpersonales reflejan el interés por satisfacer los requerimientos de los usuarios externos e internos, ofreciéndoles el mejor servicio.','tipo' => '2'),
+			array('descripcion' => '<strong>COMUNICACIÓN:</strong> Mide la habilidad para recibir, comprender y transmitir en  forma oral y escrita ideas e información,  de manera que facilite la rápida comprensión, logrando una actitud positiva en cualquier situación de trabajo.','tipo' => '2'),
+			array('descripcion' => '<strong>CREATIVIDAD E INICIATIVA:</strong> Mide la capacidad del empleado para aportar  y concretar ideas útiles y oportunas que permitan el mejoramiento continuo de los procesos,  para alcanzar los objetivos establecidos.','tipo' => '2'),
+			array('descripcion' => '<strong>GESTIÓN DE PROCESOS:</strong> Mide la capacidad que posee el empleado para planificar, organizar y dar seguimiento a las actividades emprendidas, enfatizando la consecución de resultados con una adecuada administración de recursos.','tipo' => '2'),
+			array('descripcion' => '<strong>CAPACIDAD DE ANÁLISIS Y SINTESIS:</strong> Mide la habilidad para identificar y jerarquizar los elementos, relaciones y principios que integran un sistema, situación o problema, formulando soluciones concretas y relevantes.','tipo' => '2'),
+			array('descripcion' => '<strong>TRABAJO EN EQUIPO:</strong> Mide la disposición a la unificación de esfuerzos con el resto de los empleados de área , en la consecución de las actividades y objetivos comunes.','tipo' => '2'),
+			array('descripcion' => '<strong>COMPROMISO CON VALORES ORGANIZACIONALES:</strong>  Mide el grado de identificación y responsabilidad con los valores y cultura de la institución. Atiende mas a los intereses organizacionales que a los personales.','tipo' => '3'),
+			array('descripcion' => '<strong>AUTODESARROLLO:</strong> Mide la motivación para el mejoramiento continuo a través de estudios, cursos, lectura y cualquier otra actividad individual u organizacional que aseguren su evolución personal y profesional. ','tipo' => '3'),
+			array('descripcion' => '<strong>COMUNICACIÓN:</strong> Mide la habilidad para recibir, comprender y transmitir en una forma oral o escrita ideas e información de manera que facilite la rápida comprensión, logrando una actitud positiva en cualquier situación de trabajo.','tipo' => '3'),
+			array('descripcion' => '<strong>CREATIVIDAD E INICIATIVA:</strong> Mide la capacidad del empleado para aportar y concretar ideas útiles y oportunas que permitan el mejoramiento continuo de los procesos para alcanzar los objetivos establecidos.','tipo' => '3'),
+			array('descripcion' => '<strong>LIDERAZGO:</strong> Mide la capacidad para conducir al grupo en forma efectiva hacia la consecución de los objetivos de su área, manteniendo los niveles de motivación y productividad.','tipo' => '3'),
+			array('descripcion' => '<strong>TOMA DE DECISIONES Y SOLUCIÓN DE PROBLEMAS:</strong> Mide la capacidad de responder oportunamente ante situaciones previstas o imprevistas, decidiendo en forma rápida, efectiva y oportuna, el mejor plan de acción, asumiendo las responsabilidades y riesgos.','tipo' => '3'),
+			array('descripcion' => '<strong>PLANIFICACIÓN:</strong> Capacidad para formular y organizar planes, proyectos y programas de trabajo, considerando objetivos, prioridades, etapas y recursos disponibles.','tipo' => '3'),
+			array('descripcion' => '<strong>DELEGACIÓN:</strong> Capacidad para distinguir y asignar en forma efectiva lo que debe hacer personalmente y lo que deben hacer sus subordinados.','tipo' => '3'),
+			
+		);
+	
+		foreach ($competencias as $competencia) {
+			$entidad = new Competencia();
+			$entidad->setDescripcion($competencia['descripcion']);
+			$entidad->setTipo($competencia['tipo']);
+			$manager->persist($entidad);
+		}
+		$manager->flush();
+	}
+
+	/**
+    * {@inheritDoc}
+    */
+    public function getOrder()
+    {
+        return 2; // the order in which fixtures will be loaded
+    }
+
+}

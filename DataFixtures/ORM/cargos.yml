@@ -1,0 +1,216 @@
+cufm\SedaBundle\Entity\Cargo:
+    cargo_1:
+        denominacion: BACHILLER I
+
+    cargo_2:
+        denominacion: BACHILLER II
+
+    cargo_3:
+        denominacion: BACHILLER III
+
+    cargo_4:
+        denominacion: TÉCNICO I
+
+    cargo_5:
+        denominacion: TÉCNICO II
+
+    cargo_6:
+        denominacion: PROFESIONAL I
+
+    cargo_7:
+        denominacion: PROFESIONAL II
+
+    cargo_8:
+        denominacion: PROFESIONAL III
+
+    cargo_9:
+        denominacion: JEFE (A) (E) DE LA DIRECCIÓN
+
+    cargo_10:
+        denominacion: JEFE (A) (E) DE SECRETARIA
+
+    cargo_11:
+        denominacion: JEFE (A) (E) DE OFICINA CONSULTORÍA JURÍDICA
+
+    cargo_12:
+        denominacion: JEFE (A) (E) DE OFICINA SEGURIDAD INTEGRAL, AMBIENTE Y SALUD EN EL TRABAJO
+
+    cargo_13:
+        denominacion: JEFE (A) (E) DE OFICINA ATENCIÓN A PERSONAS CON DISCAPACIDAD
+
+    cargo_14:
+        denominacion: JEFE (A) (E) DE OFICINA DE PLANIFICACIÓN Y DESARROLLO INSTITUCIONAL
+
+    cargo_15:
+        denominacion: COORDINADOR (A) (E) PLANIFICACIÓN Y PRESUPUESTO
+
+    cargo_16:
+        denominacion: COORDINADOR (A) (E) ORGANIZACIÓN Y SISTEMAS
+
+    cargo_17:
+        denominacion: JEFE (A) (E) DE OFICINA DE GESTIÓN DEL TALENTO HUMANO
+
+    cargo_18:
+        denominacion: COORDINADOR (A) (E) DE CAPTACIÓN Y SELECCIÓN
+
+    cargo_19:
+        denominacion: COORDINADOR (A) (E) DE  REGISTRO, CLASIFICACIÓN Y EGRESOS
+
+    cargo_20:
+        denominacion: COORDINADOR (A) (E) DE FORMACIÓN, EVALUACIÓN Y DESARROLLO
+
+    cargo_21:
+        denominacion: COORDINADOR (A) (E) DE ADMINISTRACIÓN Y REMUNERACIÓN
+
+    cargo_22:
+        denominacion: COORDINADOR (A) (E) DE BIENESTAR SOCIAL
+
+    cargo_23:
+        denominacion: JEFE (A) (E) DE OFICINA DE TECNOLOGÍA DE INFORMACIÓN Y COMUNICACIÓN
+
+    cargo_24:
+        denominacion: COORDINADOR (A) (E) DE DESARROLLO DE SISTEMAS DE INFORMACIÓN
+
+    cargo_25:
+        denominacion: COORDINADOR (A) (E) DE PLATAFORMA TECNOLÓGICA Y TELECOMUNICACIONES
+
+    cargo_26:
+        denominacion: COORDINADOR (A) (E) DE SOPORTE TÉCNICO Y/A USUARIO
+
+    cargo_27:
+        denominacion: JEFE (A) (E) DE LA SUBDIRECCIÓN ACADÉMICA 
+
+    cargo_28:
+        denominacion: COORDINADOR (A) (E) APOYO DOCENTE
+
+    cargo_29:
+        denominacion: COORDINADOR (A) (E) MISIÓN SUCRE
+
+    cargo_30:
+        denominacion: COORDINADOR (A) (E) PLANIFICACIÓN ACADÉMICA
+
+    cargo_31:
+        denominacion: JEFE (A) (E) DIVISIÓN ACADÉMICA
+
+    cargo_32:
+        denominacion: COORDINADOR (A) (E) DE CARRERAS
+
+    cargo_33:
+        denominacion: COORDINADOR (A) (E) DE PROGRAMAS NACIONALES DE FORMACIÓN
+
+    cargo_34:
+        denominacion: COORDINADOR (A) (E) DE SERVICIO COMUNITARIO
+
+    cargo_35:
+        denominacion: COORDINADOR (A) (E) TRABAJO DE GRADO Y PASANTÍAS
+
+    cargo_36:
+        denominacion: COORDINADOR (A) (E) DE DOCUMENTACIÓN E INFORMACIÓN
+
+    cargo_37:
+        denominacion: COORDINADOR (A) (E) DE DOCUMENTACIÓN E INFORMACIÓN (TURNO MAÑANA)
+
+    cargo_38:
+        denominacion: COORDINADOR (A) (E) DE DOCUMENTACIÓN E INFORMACIÓN (TURNO TARDE)
+
+    cargo_39:
+        denominacion: JEFE (A) (E) DIVISIÓN DE INVESTIGACIÓN Y POSTGRADO
+
+    cargo_40:
+        denominacion: COORDINADOR (A) (E) DE INVESTIGACIÓN
+
+    cargo_41:
+        denominacion: COORDINADOR (A) (E) DE POSTGRADO
+
+    cargo_42:
+        denominacion: JEFE (A) (E) DIVISIÓN DE DESARROLLO ESTUDIANTIL
+
+    cargo_43:
+        denominacion: COORDINADOR (A) (E) DE ORIENTACIÓN Y ASESORÍA EDUCATIVA
+
+    cargo_44:
+        denominacion: COORDINADOR (A) (E) DE CALIDAD DE VIDA AL ESTUDIANTE
+
+    cargo_45:
+        denominacion: JEFE (A) (E) DIVISIÓN DE INTERACCIÓN SOCIAL
+
+    cargo_46:
+        denominacion: COORDINADOR (A) (E) DE VINCULACIÓN CON LA COMUNIDAD
+
+    cargo_47:
+        denominacion: COORDINADOR (A) (E) DE PROMOCIÓN Y DIFUSIÓN CULTURAL
+
+    cargo_48:
+        denominacion: COORDINADOR (A) (E) DE COMUNICACIÓN
+
+    cargo_49:
+        denominacion: COORDINADOR (A) (E) DE DEPORTE
+
+    cargo_50:
+        denominacion: JEFE (A) (E) DIVISIÓN DE CONTROL DE ESTUDIOS
+
+    cargo_51:
+        denominacion: COORDINADOR (A) (E) DE INGRESO
+
+    cargo_52:
+        denominacion: COORDINADOR (A) (E) DE PROSECUCIÓN Y EGRESO
+
+    cargo_53:
+        denominacion: COORDINADOR (A) (E) DE EVALUACIÓN
+
+    cargo_54:
+        denominacion: JEFE (A) (E) DE SUBDIRECCIÓN ADMINISTRATIVA
+
+    cargo_55:
+        denominacion: COORDINADOR (A) (E) ARCHIVO CENTRAL Y CORRESPONDENCIA
+
+    cargo_56:
+        denominacion: JEFE (A) (E) DIVISIÓN DE ADMINISTRACIÓN
+
+    cargo_57:
+        denominacion: COORDINADOR (A) (E) DE ADQUISICIÓN Y SUMINISTROS
+
+    cargo_58:
+        denominacion: COORDINADOR (A) (E) DE CONTABILIDAD
+
+    cargo_59:
+        denominacion: COORDINADOR (A) (E) DE HABILITADURÍA
+
+    cargo_60:
+        denominacion: COORDINADOR (A) (E) DE BIENES NACIONALES
+
+    cargo_61:
+        denominacion: COORDINADOR (A) (E) DE ALMACÉN GENERAL
+
+    cargo_62:
+        denominacion: JEFE (A) (E) DIVISIÓN DE MANTENIMIENTO Y SERVICIOS
+
+    cargo_63:
+        denominacion: COORDINADOR (A) (E) DE OPERACIONES (TURNO MAÑANA)
+
+    cargo_64:
+        denominacion: COORDINADOR (A) (E) DE OPERACIONES (TURNO TARDE)
+
+    cargo_65:
+        denominacion: COORDINADOR (A) (E) DE TRANSPORTE
+
+    cargo_66:
+        denominacion: COORDINADOR (A) (E) DE REPRODUCCIÓN
+
+    cargo_67:
+        denominacion: COORDINADOR (A) (E) NÚCLEO ACADÉMICO ANDRÉS BELLO
+
+    cargo_68:
+        denominacion: COORDINADOR (A) (E) NÚCLEO ACADÉMICO BICENTENARIO
+
+    cargo_69:
+        denominacion: COORDINADOR (A) (E) DE LA COMISIÓN DE PRESTACIONES SOCIALES 
+
+    cargo_70:
+        denominacion: PRESIDENTE (A) (E) FENASINPRES
+
+    cargo_71:
+        denominacion: COORDINADOR (A) (E) DE FENASINPRES
+
+    cargo_72:
+        denominacion: COORDINADOR (A) (E) DE SEGURIDAD

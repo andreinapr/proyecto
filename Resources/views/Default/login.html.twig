@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+	Sistema de Evaluación de desempeño
+{% endblock %}
+
+{% block stylesheets %}
+	<link type="text/css" href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+	<link type="text/css" href="{{ asset('css/bootstrap-theme.css') }}" type="text/css" rel="stylesheet" />
+	<link type="text/css" href="{{ asset('jq/jquery-ui-1.10.3.custom/css/smoothness/jquery-ui-1.10.3.custom.min.css') }}" type="text/css" rel="stylesheet" />
+	<link type="text/css" href="{{ asset('css/login.css') }}" type="text/css" rel="stylesheet" />
+	<link type="text/css" href="{{ asset('css/main.css') }}" type="text/css" rel="stylesheet" />
+
+{% endblock %}
+
+{% block body -%}
+	    	<div class="container">
+		        <form class="form-signin" role="form" action="{{ path('login_check') }}" method="post" >
+		        	<h2 class="form-signin-heading" align="center">Debe identificarse</h2>
+	  				<input type="hidden" name="_target_path" value="/odis/index" />
+					<input type="email" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="Correo Institucional"/>
+					<input type="password" class="form-control" id="password" name="_password" value=""  placeholder="Contraseña"/>
+		              {% if error %}
+	    	              <div class="alert alert-danger" align="center">{{ error }}</div>
+	        	       {% endif %}
+					<input type="submit" class="btn btn-lg btn-primary btn-block" id="boton-submit" value="Accesar" />
+				</form>
+			</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset('jq/jquery-1.10.2.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('jq/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('jq/jquery-textarea-counter.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('jq/jquery-validation-1.11.1/dist/jquery.validate.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('jq/jquery-validation-1.11.1/dist/additional-methods.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/sed.js') }}"></script>
+{% endblock %}

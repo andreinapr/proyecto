@@ -1,0 +1,115 @@
+{# {% extends 'SedaBundle::layout.html.twig' %} #}
+
+
+<meta charset="UTF-8" />
+<style>
+    html {
+    	font-family: sans-serif;
+        font-size: 14pt;
+        
+
+    }
+    table{
+    	width: 1424px;
+    }
+    th,tr,td{
+    	
+    	border: 1px solid black;
+    }
+    table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+}
+    div {
+    	font-family: sans-serif;
+        font-size: 14pt;
+    }
+ 	div.saltopagina{ 
+    	display:block; 
+      	page-break-before:always;
+   	}    
+</style>
+
+
+{% block contenido %}
+
+{# Objetivos
+
+
+{{ odi.evaluacion[0] | ld }}
+#}
+
+
+<div class="row" align = "center">
+	<img src="http://localhost/seda/web/img/cintillo201.png" >
+</div>
+
+<H2 align="center">Listado de Evaluación de Desempeño Individual del personal Administrativo</H2>
+
+<H3 align="center">PERIODO EVALUADO:  Desde:{% if periodo == 1 %}
+					    01/01/{{ ano }}   Hasta: 30/06/{{ ano }}
+					{% endif %}
+					{% if periodo == 2 %}
+					    01/07/{{ ano }}   Hasta: 31/12/{{ ano }}
+					{% endif %}						
+					
+</H3>
+
+
+
+
+{#  {{ evaluaciones[0] | ld }} #}
+
+<table cellspacing=0 cellpadding=2>
+	<thead>
+	    <th>N°</th>
+		<th>Nombres y Apellidos</th>
+		<th>Dependencia</th>
+		<th>Puntaje Total</th>
+		<th>Rango de Actuación</th>
+	</thead>
+	<tbody>
+{#<tr>
+	<td>N°</td>
+	<td>Nombres y Apellidos</td>
+	<td>Dependencia</td>
+	<td>Puntaje Total</td>
+	<td>Rango de Actuación</td>
+</tr>#}
+
+	{% for evaluacion in evaluaciones %}
+		<tr>
+		<td>{{ loop.index }}</td>
+			<td>
+				{{ evaluacion.odi.usuario }}
+			</td>
+			<td>
+				{{ evaluacion.odi.usuario.dependencia }}
+			</td>
+			<td>
+				{{ evaluacion.total }}
+			</td>
+			<td>
+				{% if (evaluacion.total >= 100) and (evaluacion.total <= 179) %}
+				    MUY POR DEBAJO DE LO ESPERADO
+				{% elseif (evaluacion.total >= 180) and (evaluacion.total <= 259) %}
+					POR DEBAJO DE LO ESPERADO 
+				{% elseif (evaluacion.total >= 260) and (evaluacion.total <= 339) %}
+					DENTRO DE LO ESPERADO
+				{% elseif (evaluacion.total >= 340) and (evaluacion.total <= 419) %}
+					SOBRE LO ESPERADO
+				{% elseif (evaluacion.total >= 420) and (evaluacion.total <= 500) %}
+					DESEMPEÑO EXCEPCIONAL
+				{% endif %}						
+
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+
+{#
+</div>		
+
+#}
+{% endblock %}

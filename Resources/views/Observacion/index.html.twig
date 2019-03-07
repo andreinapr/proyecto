@@ -1,0 +1,41 @@
+{% extends 'SedaBundle::layout.html.twig' %}
+
+{% block contenido %}
+
+{# {{ odis | ld }} #}
+
+
+<div class="row">
+<div class="row">
+	<div class="alert-danger" align= "center">{{ eliminado }}</div>
+</div>			
+	<table class="table table-striped">
+
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Denominación</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for observacion in observaciones %}
+				<tr>
+					<td align = "center">{{ observacion.id }}</td>
+					<td align = "center">{{ observacion.denominacion }}</td>
+					<td align = "center">
+						<a href="{{ path('Seda_observaciones_editar', { 'id': observacion.id }) }}">Editar</a></br>
+						<a href="{{ path('Seda_observaciones_eliminar', { 'id': observacion.id }) }}">Eliminar</a></br>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+				  <td>
+				  <h2 >No existen registros de ODIS</h2>
+				  </td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}

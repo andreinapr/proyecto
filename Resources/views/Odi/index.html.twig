@@ -1,0 +1,79 @@
+{% extends 'SedaBundle::layout.html.twig' %}
+
+{% block contenido %}
+
+{# {{ odis | ld }} #}
+
+<div class="class row">
+	<h4 align="center">Listado de Objetivos de Desempeño Individual</h4>
+</div>
+<br>
+<div class="row">
+	<table id="tabla-index-odi"class="table table-striped">
+
+		<thead>
+			<tr>
+
+				<th>Período</th>
+				<th>Año</th>
+				<th><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> O.G.T.H.</th>
+				<th><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Evaluado</th>
+				<th>O.D.I.</th>
+				<th>Evaluación</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for odi in odis %}
+				<tr>
+					<td align = "center">
+						{% if odi.periodo == 1 %}
+						    1er. Semestre
+						{% endif %}
+						{% if odi.periodo == 2 %}
+						    2do. Semestre
+						{% endif %}
+					</td>
+					<td align = "center">{{ odi.ano }}</td>
+					<td align = "center">
+						{% if odi.vbogth == true %}
+						    Si
+						{% else %}
+						    No
+						{% endif %}
+					</td>
+					<td align = "center">
+						{% if odi.vbevaluado == true %}
+						    Si
+						{% else %}
+						    No
+						{% endif %}
+					</td>
+					<td align = "center">
+						<a href="{{ path('Seda_odis_mostrar', { 'odi_id': odi.id }) }}" title="Mostrar"><span class="glyphicon glyphicon-eye-open" aria-hidden="true" ></span></a>
+						{% if odi.vbevaluado == true %}
+							&nbsp;&nbsp;
+							<a href="{{ path('Seda_odis_pdf', { 'odi_id': odi.id }) }}" title="Imprimir"><span class="glyphicon glyphicon-print" aria-hidden="true" ></span></a>
+						{% endif %}
+					</td>
+					<td align="center">
+						{% if odi.evaluacion[0] is defined %}
+
+							<a href="{{ path('Seda_evaluacion_mostrar', { 'odi_id': odi.id }) }}" title="Mostrar"><span class="glyphicon glyphicon-eye-open" aria-hidden="true" ></span></a>
+							{% if (odi.evaluacion[0].aprobacionEvaluado == true  or odi.evaluacion[0].aprobacionEvaluado == false) and odi.evaluacion[0].fechaEvaluado is not null %}
+										&nbsp;&nbsp;
+										<a href="{{ path('Seda_evaluacion_pdf', { 'odi_id': odi.id }) }}" title="Imprimir"><span class="glyphicon glyphicon-print" aria-hidden="true" ></span></a>
+							{% endif %}
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('js/tablas.js') }}"></script>
+{% endblock %}

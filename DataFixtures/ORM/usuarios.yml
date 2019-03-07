@@ -1,0 +1,40 @@
+cufm\SedaBundle\Entity\Usuario:
+    usuario1:
+        nombres: Nathaly Sugay
+        apellidos: Bravo Núñez
+        cedula: 15153938
+        username: <generarCorreo(@usuario1)>
+        password: <encodePassword(@usuario1, "123456")>
+        dependencia: @dependencia_12
+        cargo: @cargo_4
+        supervisor: 1
+        supervisa: @dependencia_15
+        nivel: 3
+        roles: [@role_usuario, @role_supervisor, @role_ogth]
+        docente: 0
+    usuario2:
+        nombres: Francis Lian Antonieta
+        apellidos: Quintana Rosal
+        cedula: 19064461
+        username: <generarCorreo(@usuario2)>
+        password: <encodePassword(@usuario2, "123456")>
+        dependencia: @dependencia_15
+        cargo: @cargo_4
+        supervisor: 0
+        supervisa: 
+        nivel: 2
+        roles: [@role_usuario, @role_ogth]
+        docente: 0
+    usuario3:
+        nombres: Giovanny
+        apellidos: Garcia Perez
+        cedula: 10181287
+        username: <generarCorreo(@usuario3)>
+        password: <encodePassword(@usuario3, "123456")>
+        dependencia: @dependencia_15
+        cargo: @cargo_4
+        supervisor: 0
+        supervisa: 
+        nivel: 2
+        roles: [@role_usuario, @role_ogth]
+        docente: 0   

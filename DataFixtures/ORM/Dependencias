@@ -1,0 +1,99 @@
+<?php
+
+namespace cufm\SedaBundle\DataFixtures\ORM;
+
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
+use cufm\SedaBundle\Entity\Dependencia;
+
+class Dependencias extends AbstractFixture implements OrderedFixtureInterface
+{
+
+	/**
+    * {@inheritDoc}
+    */		
+	public function load(ObjectManager $manager)
+	{
+		$dependencias = array(
+			array('denominacion' =>'Consejo Directivo', 'iniciales' =>'CDO', 'codigo' =>'000'),
+			array('denominacion' =>'Consejo Académico', 'iniciales' =>'CAO', 'codigo' =>'100'),
+			array('denominacion' =>'Consejo Administrativo', 'iniciales' =>'CAD', 'codigo' =>'110'),
+			array('denominacion' =>'Dirección', 'iniciales' =>'DIR', 'codigo' =>'120'),
+			array('denominacion' =>'Secretaria', 'iniciales' =>'SEC', 'codigo' =>'200'),
+			array('denominacion' =>'Oficina Consultoría Jurídica', 'iniciales' =>'OCOJ', 'codigo' =>'210'),
+			array('denominacion' =>'Oficina Seguridad Integral, Ambiente y Salud en el Trabajo', 'iniciales' =>'OSIAS', 'codigo' =>'220'),
+			array('denominacion' =>'Oficina Atención a Personas con Discapacidad', 'iniciales' =>'OAPC', 'codigo' =>'230'),
+			array('denominacion' =>'Oficina de Planificación y Desarrollo Institucional', 'iniciales' =>'OPDI', 'codigo' =>'240'),
+			array('denominacion' =>'Coordinación Planificación y Presupuesto', 'iniciales' =>'CPYP', 'codigo' =>'241'),
+			array('denominacion' =>'Coordinación Organización y Sistemas', 'iniciales' =>'COYS', 'codigo' =>'242'),
+			array('denominacion' =>'Oficina de Gestión Del Talento Humano', 'iniciales' =>'OGTH', 'codigo' =>'250'),
+			array('denominacion' =>'Coordinación de Captación y Selección', 'iniciales' =>'CCYS', 'codigo' =>'251'),
+			array('denominacion' =>'Coordinación de  Registro, Clasificación y Egresos', 'iniciales' =>'CRCE', 'codigo' =>'252'),
+			array('denominacion' =>'Coordinación de Formación, Evaluación y Desarrollo', 'iniciales' =>'CFED', 'codigo' =>'253'),
+			array('denominacion' =>'Coordinación de Administración y Remuneración', 'iniciales' =>'CAYR', 'codigo' =>'254'),
+			array('denominacion' =>'Coordinación de Bienestar Social', 'iniciales' =>'CBSS', 'codigo' =>'255'),
+			array('denominacion' =>'Oficina de Tecnología de Información y Comunicación', 'iniciales' =>'OTIC', 'codigo' =>'260'),
+			array('denominacion' =>'Coordinación de Desarrollo de Sistemas E Información', 'iniciales' =>'CDSI', 'codigo' =>'261'),
+			array('denominacion' =>'Coordinación de Plataforma Tecnológica y Telecomunicaciones', 'iniciales' =>'CPTT', 'codigo' =>'262'),
+			array('denominacion' =>'Coordinación de Soporte Técnico Y/A Usuarios', 'iniciales' =>'CSTU', 'codigo' =>'263'),
+			array('denominacion' =>'Subdirección Académica', 'iniciales' =>'SAC', 'codigo' =>'300'),
+			array('denominacion' =>'Coordinación Apoyo Docente', 'iniciales' =>'CAPD', 'codigo' =>'301'),
+			array('denominacion' =>'Coordinación Misión Sucre', 'iniciales' =>'CMIS', 'codigo' =>'302'),
+			array('denominacion' =>'Coordinación Planificación Académica', 'iniciales' =>'CPLA', 'codigo' =>'303'),
+			array('denominacion' =>'División Académica', 'iniciales' =>'DAC', 'codigo' =>'310'),
+			array('denominacion' =>'Coordinación de Carreras', 'iniciales' =>'CCAR', 'codigo' =>'311'),
+			array('denominacion' =>'Coordinación de Programas Nacionales de Formación', 'iniciales' =>'CPNF', 'codigo' =>'312'),
+			array('denominacion' =>'Coordinación de Servicio Comunitario', 'iniciales' =>'CSCO', 'codigo' =>'313'),
+			array('denominacion' =>'Coordinación Trabajo de Grado y Pasantías', 'iniciales' =>'CTGP', 'codigo' =>'314'),
+			array('denominacion' =>'Coordinación de Documentación E Información', 'iniciales' =>'CDEI', 'codigo' =>'315'),
+			array('denominacion' =>'Coordinación de Documentación E Información (Turno Mañana)', 'iniciales' =>'CDEIM', 'codigo' =>'315'),
+			array('denominacion' =>'Coordinación de Documentación E Información (Turno Tarde)', 'iniciales' =>'CDEIT', 'codigo' =>'315'),
+			array('denominacion' =>'División de Investigación y Postgrado', 'iniciales' =>'DEYP', 'codigo' =>'320'),
+			array('denominacion' =>'Coordinación de Investigación', 'iniciales' =>'CINV', 'codigo' =>'321'),
+			array('denominacion' =>'Coordinación de Postgrado', 'iniciales' =>'CPOS', 'codigo' =>'322'),
+			array('denominacion' =>'División de Desarrollo Estudiantil', 'iniciales' =>'DDE', 'codigo' =>'330'),
+			array('denominacion' =>'Coordinación de Orientación y Asesoría Educativa', 'iniciales' =>'COAE', 'codigo' =>'331'),
+			array('denominacion' =>'Coordinación de Calidad de Vida Al Estudiante', 'iniciales' =>'CCVE', 'codigo' =>'332'),
+			array('denominacion' =>'División de Interacción Social', 'iniciales' =>'DINS', 'codigo' =>'340'),
+			array('denominacion' =>'Coordinación de Vinculación Con La Comunidad', 'iniciales' =>'CVCC', 'codigo' =>'341'),
+			array('denominacion' =>'Coordinación de Promoción y Difusión Cultural', 'iniciales' =>'CPDC', 'codigo' =>'342'),
+			array('denominacion' =>'Coordinación de Comunicación', 'iniciales' =>'CCOM', 'codigo' =>'343'),
+			array('denominacion' =>'Coordinación de Deporte', 'iniciales' =>'CDPE', 'codigo' =>'344'),
+			array('denominacion' =>'División de Control de Estudios', 'iniciales' =>'DCE', 'codigo' =>'350'),
+			array('denominacion' =>'Coordinación de Ingreso', 'iniciales' =>'CIN', 'codigo' =>'351'),
+			array('denominacion' =>'Coordinación de Prosecución y Egreso', 'iniciales' =>'CPE', 'codigo' =>'352'),
+			array('denominacion' =>'Coordinación de Evaluación', 'iniciales' =>'CEV', 'codigo' =>'353'),
+			array('denominacion' =>'Subdirección Administrativa', 'iniciales' =>'SAD', 'codigo' =>'400'),
+			array('denominacion' =>'Coordinación Archivo Central y Correspondencia', 'iniciales' =>'CACC', 'codigo' =>'401'),
+			array('denominacion' =>'División de Administración', 'iniciales' =>'DAD', 'codigo' =>'410'),
+			array('denominacion' =>'Coordinación de Adquisición y Suministros', 'iniciales' =>'CAS', 'codigo' =>'411'),
+			array('denominacion' =>'Coordinación de Contabilidad', 'iniciales' =>'CCO', 'codigo' =>'412'),
+			array('denominacion' =>'Coordinación de Habilitaduría', 'iniciales' =>'CHA', 'codigo' =>'413'),
+			array('denominacion' =>'Coordinación de Bienes Nacionales', 'iniciales' =>'CBN', 'codigo' =>'414'),
+			array('denominacion' =>'Coordinación de Almacén General', 'iniciales' =>'CAG', 'codigo' =>'415'),
+			array('denominacion' =>'División de Mantenimiento y Servicios', 'iniciales' =>'DMS', 'codigo' =>'420'),
+			array('denominacion' =>'Coordinación de Operaciones', 'iniciales' =>'COP', 'codigo' =>'421'),
+			array('denominacion' =>'Coordinación de Transporte', 'iniciales' =>'CTE', 'codigo' =>'422'),
+			array('denominacion' =>'Coordinación de Reproducción', 'iniciales' =>'CRE', 'codigo' =>'423'),
+			array('denominacion' =>'Comisión de Prestaciones Sociales', 'iniciales' =>'CRE', 'codigo' =>'423'),
+		);
+	
+		foreach ($dependencias as $dependencia) {
+			$entidad = new Dependencia();
+			$entidad->setDenominacion($dependencia['denominacion']);
+			$entidad->setIniciales($dependencia['iniciales']);
+			$entidad->setCodigo($dependencia['codigo']);
+			$manager->persist($entidad);
+		}
+		$manager->flush();
+	}
+	
+	/**
+    * {@inheritDoc}
+    */
+    public function getOrder()
+    {
+        return 3; // the order in which fixtures will be loaded
+    }	
+}

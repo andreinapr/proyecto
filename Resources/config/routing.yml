@@ -1,0 +1,191 @@
+Seda_homepage:
+    pattern:  /
+    defaults: { _controller: SedaBundle:Default:login }
+
+Seda_odis_index:
+    path:      /odis/index
+    defaults:  { _controller: SedaBundle:Odi:index }
+
+Seda_odis_mostrar:
+    path:      /odis/mostrar/{odi_id}
+    defaults:  { _controller: SedaBundle:Odi:mostrarOdi, odi_id: 0 }
+
+Seda_odis_lista:
+    path:      /odis/lista
+    defaults:  { _controller: SedaBundle:Odi:lista }
+
+Seda_odis_crear:
+    pattern:   /odis/crear
+    defaults:  { _controller: SedaBundle:Odi:crearOdi }
+
+Seda_odis_elegir:
+    pattern:   /odis/elegir
+    defaults:  { _controller: SedaBundle:Odi:elegirOdi }
+
+Seda_odis_editar:
+    pattern:   /odis/editar/{consultaodi}
+    defaults:  { _controller: SedaBundle:Odi:editarOdi, consultaodi: 0 }
+
+Seda_odis_elimina_lista:
+    path:      /odis/eliminarlista/{eliminado}
+    defaults:  { _controller: SedaBundle:Odi:eliminarLista, eliminado: ""}
+
+Seda_odis_eliminar:
+    path:      /odis/eliminar/{odi_id}
+    defaults:  { _controller: SedaBundle:Odi:eliminarOdi, odi_id: 0 }
+
+Seda_odis_imprimir_lista:
+    path:      /odis/imprimirlista
+    defaults:  { _controller: SedaBundle:Odi:imprimirLista}
+
+Seda_odis_pdf:
+    path:      /odis/pdf/{odi_id}
+    defaults:  { _controller: SedaBundle:Odi:pdfOdi, odi_id: 0 }
+
+Seda_observaciones_index:
+    path:      /observaciones/index/{eliminado}
+    defaults:  { _controller: SedaBundle:Observacion:index, eliminado: "" }
+
+Seda_observaciones_crear:
+    path:      /observaciones/crear
+    defaults:  { _controller: SedaBundle:Observacion:crearObservacion }
+
+Seda_observaciones_editar:
+    path:      /observaciones/editar/{id}
+    defaults:  { _controller: SedaBundle:Observacion:editarObservacion, id: 0 }
+
+Seda_observaciones_eliminar:
+    path:      /observaciones/eliminar/{id}
+    defaults:  { _controller: SedaBundle:Observacion:eliminarObservacion, id: 0 }
+
+Seda_observaciones_revision_listar:
+    path:      /observaciones/revision
+    defaults:  { _controller: SedaBundle:Observacion:revisionListar }
+
+Seda_observaciones_revision:
+    path:      /observaciones/revision/{id}
+    defaults:  { _controller: SedaBundle:Observacion:revision, id: 0 }
+
+Seda_evaluacion_listar:
+    path:      /odis/evaluacionlistar/{eliminado}
+    defaults:  { _controller: SedaBundle:Odi:evaluacionListar, eliminado : ""}
+
+Seda_evaluacion_eliminar:
+    path:      /odis/evaluacioneliminar/{evaluacion_id}
+    defaults:  { _controller: SedaBundle:Odi:evaluacionEliminar, id: 0}
+
+Seda_evaluacion_odi:
+    path:      /odis/evaluacion/{odi_id}
+    defaults:  { _controller: SedaBundle:Odi:evaluacionOdi, odi_id: 0}
+
+Seda_evaluacion_formato:
+    path:      /evaluacion/formato/{eval_id}
+    defaults:  { _controller: SedaBundle:Odi:evaluacionFormato, eval_id: 0}
+
+Seda_evaluacion_mostrar:
+    path:      /evaluacion/mostrar/{odi_id}
+    defaults:  { _controller: SedaBundle:Odi:evaluacionMostrar, odi_id: 0}
+
+Seda_evaluacion_pdf:
+    path:      /evaluacion/pdf/{odi_id}
+    defaults:  { _controller: SedaBundle:Odi:pdfEvaluacion, odi_id: 0 }
+
+Seda_reportes_evaluaciones_listado:
+    path:      /reportes/evaluacion_listado
+    defaults:  { _controller: SedaBundle:Odi:opcionesListadoEvaluacion }
+
+Seda_cargos_index:
+    path:      /cargos/index/{eliminado}
+    defaults:  { _controller: SedaBundle:Cargo:index, eliminado: "" }
+
+Seda_cargos_crear:
+    path:      /cargos/crear
+    defaults:  { _controller: SedaBundle:Cargo:crearCargo }
+
+Seda_cargos_editar:
+    path:      /cargos/editar/{id}
+    defaults:  { _controller: SedaBundle:Cargo:editarCargo, id: 0 }
+
+Seda_cargos_eliminar:
+    path:      /cargos/eliminar/{id}
+    defaults:  { _controller: SedaBundle:Cargo:eliminarCargo, id: 0 }
+
+Seda_dependencias_index:
+    path:      /dependencias/index/{eliminado}
+    defaults:  { _controller: SedaBundle:Dependencia:index, eliminado: "" }
+
+Seda_dependencias_crear:
+    path:      /dependencias/crear
+    defaults:  { _controller: SedaBundle:Dependencia:crearDependencia }
+
+Seda_dependencias_editar:
+    path:      /dependencias/editar/{id}
+    defaults:  { _controller: SedaBundle:Dependencia:editarDependencia, id: 0 }
+
+Seda_dependencias_eliminar:
+    path:      /dependencias/eliminar/{id}
+    defaults:  { _controller: SedaBundle:Dependencia:eliminarDependencia, id: 0 }
+
+
+Seda_evaluacionObrero:
+    path:      /evaluacionobrero/index
+    defaults:  { _controller: SedaBundle:EvaluacionObrero:index}
+
+Seda_evaluacionObrero_crear:
+    path:      /evaluacionobrero/crear
+    defaults:  { _controller: SedaBundle:EvaluacionObrero:crear}
+
+Seda_evaluacionObrero_elegir:
+    path:      /evaluacionobrero/elegir
+    defaults:  { _controller: SedaBundle:EvaluacionObrero:elegir}
+
+Seda_evaluacionObrero_editar:
+    path:      /evaluacionobrero/editar/{id}
+    defaults:  { _controller: SedaBundle:EvaluacionObrero:editar, id: 0 }
+
+Seda_evaluacionObrero_listar:
+    path:      /evaluacionobrero/listar/{eliminado}
+    defaults:  { _controller: SedaBundle:EvaluacionObrero:listar, eliminado: "" }
+
+Seda_evaluacionObrero_eliminar:
+    path:      /evaluacionobrero/eliminar/{id}
+    defaults:  { _controller: SedaBundle:EvaluacionObrero:eliminar, id: 0 }
+
+Seda_evaluacionObrero_mostrar:
+    path:      /evaluacionobrero/mostrar/{id}
+    defaults:  { _controller: SedaBundle:EvaluacionObrero:mostrar, id: 0 }    
+
+Seda_evaluacionObrero_pdf:
+    path:      /evaluacionobrero/pdf/{id}
+    defaults:  { _controller: SedaBundle:EvaluacionObrero:pdf, id: 0 }            
+
+
+Seda_configuracion_evaluacion:
+    path:       /configuracion/evaluacion
+    defaults:   {_controller: SedaBundle:Default:evaluacion}
+
+login:
+    pattern: /login
+    defaults: { _controller: SedaBundle:Default:login }
+
+login_check:
+    pattern: /login_check
+
+logout:
+    pattern: /logout
+
+usuario_index:
+    pattern:   /usuario/index
+    defaults:  { _controller: SedaBundle:Usuario:index }
+
+usuario_crear:
+    pattern:   /usuario/nuevo
+    defaults:  { _controller: SedaBundle:Usuario:crear }
+
+usuario_editar:
+    pattern:   /usuario/editar/{usuario_id}
+    defaults:  { _controller: SedaBundle:Usuario:editar, usuario_id: 0 }
+
+usuario_clave:
+    pattern:   /clave/{usuario_id}
+    defaults:  { _controller: SedaBundle:Usuario:clave }

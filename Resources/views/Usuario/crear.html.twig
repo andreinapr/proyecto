@@ -1,0 +1,109 @@
+{% extends 'SedaBundle::layout.html.twig' %}
+
+
+{% block contenido %}
+	
+{# {{ formulario | ld }} #}
+
+	{{ form_start(formulario, { 'attr': {'novalidate': 'novalidate', 'class': 'form-horizontal', 'id': 'usuarios'} }) }}
+		    {{ form_errors(formulario) }}
+
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.nombres, 'Nombres: ') }}</div>	
+		        <div class="col-md-7">{{ form_widget(formulario.nombres, { 'attr': {'class': 'form-control'} }) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.nombres) }}</div>
+		    </div>
+	    </div>
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.apellidos, 'Apellidos: ') }}</div>	
+		        <div class="col-md-7">{{ form_widget(formulario.apellidos, { 'attr': {'class': 'form-control'} }) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.apellidos) }}</div>
+		    </div>
+	    </div>
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.cedula, 'Cédula: ') }}</div>	
+		        <div class="col-md-7">{{ form_widget(formulario.cedula, { 'attr': {'class': 'form-control'} }) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.cedula) }}</div>
+		    </div>
+	    </div>
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.cargo, 'Cargo: ') }}</div>	
+		        <div class="col-md-7">{{ form_widget(formulario.cargo, { 'attr': {'class': 'form-control'} }) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.cargo) }}</div>
+		    </div>
+	    </div>
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.nivel, 'Nivel: ') }}</div>	
+		        <div class="col-md-7">{{ form_widget(formulario.nivel, { 'attr': {'class': 'checkbox-inline'} }) }}</div>
+			    <div class="alert-danger" >{{ form_errors(formulario.nivel) }}</div>
+		    </div>
+	    </div>	    	    
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.dependencia, 'Dependencia: ') }}</div>	
+		        <div class="col-md-7">{{ form_widget(formulario.dependencia, { 'attr': {'class': 'form-control'} }) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.dependencia) }}</div>
+		    </div>
+	    </div>
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.tipoPersonal, 'Tipo de Personal: ') }}</div>	
+		        <div class="col-md-7">{{ form_widget(formulario.tipoPersonal) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.tipoPersonal) }}</div>
+		    </div>
+	    </div>	    
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.supervisor, 'Supervisor: ') }}</div>	
+		        <div class="col-md-7">{{ form_widget(formulario.supervisor) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.supervisor) }}</div>
+		    </div>
+	    </div>
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.supervisa, 'Supervisa a: ') }}</div>	
+		        <div class="col-md-7">{{ form_widget(formulario.supervisa, { 'attr': {'class': 'form-control'} }) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.supervisa) }}</div>
+		    </div>
+	    </div>
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.username, 'Usuario: ') }}</div>
+		        <div class="col-md-7">{{ form_widget(formulario.username, { 'attr': {'class': 'form-control', 'placeholder': 'Correo Institucional'} }) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.username) }}</div>
+		    </div>
+	    </div>
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.password, 'Contraseña: ') }}</div>
+		        <div class="col-md-7">{{ form_widget(formulario.password, { 'attr': {'class': 'form-control'} }) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.password) }}</div>
+		    </div>
+	    </div>	    
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.isActive, 'Activo: ') }}</div>	
+		        <div class="col-md-7">{{ form_widget(formulario.isActive) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formulario.isActive) }}</div>
+		    </div>
+	    </div>
+	   <div class="row">
+		    <div class="form-group">
+		    	<div class="col-md-3 control-label">{{ form_label(formulario.roles, 'Rol: ') }}</div>	
+		        <div class="col-md-7">{{ form_widget(formulario.roles, { 'attr': {'class': 'checkbox-inline'} }) }}</div>
+			    <div class="alert-danger" a>{{ form_errors(formulario.roles) }}</div>
+		    </div>
+	    </div>
+		<div class="form-group"><br></div>
+	    <div class="row" align="center">
+			<input class="btn btn-primary" type="submit" value="Guardar" />
+		</div>
+		{{ form_end(formulario) }}
+
+
+{% endblock %}

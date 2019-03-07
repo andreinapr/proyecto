@@ -1,0 +1,89 @@
+{% extends 'SedaBundle::layout.html.twig' %}
+
+{% block contenido %}
+
+{#  {{ evaluaciones | ld }}  #}
+
+{% if eliminado is defined %}	
+	<div class="row">
+		<div class="alert-danger" align= "center">{{ eliminado }}</div>
+	</div>
+	</br>
+{% endif %}
+<div class="class row">
+		<h4 align="center">Listado de Evaluacion de Eficiencia del Personal Obrero</h4>
+</div>
+<br>
+
+<div class="row">
+	<table id="tabla-lista-odi"class="table table-striped">
+
+		<thead>
+			<tr>
+				<th>Dependencia</th>
+				<th>Personal</th>
+				<th>Año</th>
+				<th>Periodo</th>
+				<th>Rango de Actuación</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for evaluacion in evaluaciones %}
+				<tr>
+					<td align = "center">{{ evaluacion.evaluado.dependencia }}</td>
+					<td align = "center">{{ evaluacion.evaluado }}</td>
+					<td align = "center">{{ evaluacion.ano }}</td>
+					<td align = "center">
+						{% if evaluacion.periodo == 1 %}
+						    1er. Semestre
+						{% endif %}
+						{% if evaluacion.periodo == 2 %}
+						    2do. Semestre
+						{% endif %}
+					</td>
+					<td align = "center">
+
+					{% if (evaluacion.factoresSupervision1 == null) and (evaluacion.factoresSupervision2 == null) and (evaluacion.factoresSupervision3 == null) and (evaluacion.factoresSupervision4 == null) %}
+						{% if (evaluacion.total >= 0) and (evaluacion.total <= 8) %}
+						    DEFICIENTE
+						{% elseif (evaluacion.total >= 9) and (evaluacion.total <= 16) %}
+							REGULAR
+						{% elseif (evaluacion.total >= 17) and (evaluacion.total <= 24) %}
+							BUENO
+						{% elseif (evaluacion.total >= 25) and (evaluacion.total <= 32) %}
+							MUY BUENO
+						{% elseif (evaluacion.total >= 33) and (evaluacion.total <= 40) %}
+							EXCELENTE
+						{% endif %}		
+					{% else %}	
+						{% if (evaluacion.total >= 0) and (evaluacion.total <= 2) %}
+						    DEFICIENTE
+						{% elseif (evaluacion.total >= 13) and (evaluacion.total <= 24) %}
+							REGULAR
+						{% elseif (evaluacion.total >= 25) and (evaluacion.total <= 36) %}
+							BUENO
+						{% elseif (evaluacion.total >= 37) and (evaluacion.total <= 48) %}
+							MUY BUENO
+						{% elseif (evaluacion.total >= 49) and (evaluacion.total <= 60) %}
+							EXCELENTE
+						{% endif %}	
+					{% endif %}												
+					</td>
+					<td align = "center">
+						<a href="{{ path('Seda_evaluacionObrero_mostrar', { 'id': evaluacion.id }) }}" title="Mostrar"><span class="glyphicon glyphicon-eye-open" aria-hidden="true" ></span></a>
+						&nbsp;&nbsp;
+						<a href="{{ path('Seda_evaluacionObrero_eliminar', { 'id': evaluacion.id }) }}" title="Eliminar"><span class="glyphicon glyphicon-remove" aria-hidden="true" ></span></a>
+					</td>					
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('js/tablas.js') }}"></script>
+{% endblock %}

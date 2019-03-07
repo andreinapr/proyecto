@@ -1,0 +1,7 @@
+parameters:
+#    seda.example.class: cufm\SedaBundle\Example
+
+services:
+#    seda.example:
+#        class: %seda.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

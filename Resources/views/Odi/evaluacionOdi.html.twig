@@ -1,0 +1,483 @@
+{% extends 'SedaBundle::layout.html.twig' %}
+
+{% block contenido %}
+
+{# {{ odis | ld }} 
+
+{{ formularioOdi.objetivos[0].peso | ld }}
+{{ odi.objetivos[0].peso | ld }}
+#}
+
+
+<div class="class row">
+		<H2 align="center">ESTABLECIMIENTO Y EVALUACIÓN DE LOS OBJETIVOS DE DESEMPEÑO INDIVIDUAL</H2>
+</div>
+
+{{ form_start(form, { 'attr': {'novalidate': 'novalidate', 'class': 'form-inline', 'id': 'evaluacion'} }) }}
+		    {{ form_errors(form) }}
+<div>
+<div class="row">
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Funcionario</th>
+				<th>Periodo</th>
+				<th>Año</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td align = "center">{{ odi.usuario }}</td>
+				<td align = "center">
+					{% if odi.periodo == 1 %}
+					    1er. Semestre
+					{% endif %}
+					{% if odi.periodo == 2 %}
+					    2do. Semestre
+					{% endif %}						
+				</td align = "center">
+				<td>{{ odi.ano }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+
+
+<div class="row">
+	
+		<table class="table table-striped" >
+			<thead>
+				<tr>
+					<th>Objetivos</th>
+					<th>Peso</th>
+					<th>Rango</th>
+					<th>Peso x Rango</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% set i = 0 %}
+			{% for objetivo in odi.objetivos %}
+				<tr>
+					<td width="60%">{{ objetivo.objetivo }}</td>
+					<td width="10%" align = "center">
+						<div class="form-group">
+			        		<div>{{ form_widget(form.odi.objetivos[i].peso, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '1'} }) }}</div>
+				    		<div class="alert-danger" align= "center">{{ form_errors(form.odi.objetivos[i].peso) }}</div>
+			    		</div>	
+					</td>
+					<td width="20%" align = "center">
+						<div class="form-group">
+			        		<div>{{ form_widget(form.odi.objetivos[i].rango, { 'attr': {'class': 'form-control'} }) }}</div>
+				    		<div class="alert-danger" align= "center">{{ form_errors(form.odi.objetivos[i].rango) }}</div>
+			    		</div>	
+					</td>
+					<td width="10%" align = "center">
+						<div class="form-group">
+			        		<div>{{ form_widget(form.odi.objetivos[i].pesoxrango, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2'} }) }}</div>
+				    		<div class="alert-danger" align= "center">{{ form_errors(form.odi.objetivos[i].pesoxrango) }}</div>
+			    		</div>							
+					</td>
+				</tr>
+			{% set i = i + 1 %}	
+			{% endfor %}	
+				<tr>
+					<td></td>
+					<td align = "center">50</td>
+					<td align = "center">Total</td>
+					<td align = "center">
+						<div class="form-group">
+			        		<div>{{ form_widget(form.odi.totalevaluacion, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2'} }) }}</div>
+				    		<div class="alert-danger" align= "center">{{ form_errors(form.odi.totalevaluacion) }}</div>
+			    		</div>							
+					</td>
+				</tr>
+			</tbody>
+		</table>
+</div>
+
+
+
+{# Competencias 
+
+{{ competes | ld }} 
+
+
+
+{{ formularioCompetencias.competencias | ld }} 
+#}
+
+<div class="class row">
+		<H2 align="center">EVALUACIÓN DE COMPETENCIAS</H2>
+</div>
+
+{# {{ odi.usuario.nivel | ld }} #}
+
+{% if odi.usuario.nivel == 3 %}
+<div class="row">
+ <div class="col-md-12">
+<p align="center" class="bg-danger">El peso que se le asigne a cada competencia puede ser igual o inferior a ocho (8) puntos, pero nunca mayor</p>
+</div>
+</div>
+	<div class="row">
+		
+			<table class="table table-striped" >
+				<thead>
+					<tr>
+						<th>Competencias</th>
+						<th>Peso</th>
+						<th>Rango</th>
+						<th>Peso x Rango</th>
+					</tr>
+				</thead>
+				<tbody>
+				{#{% set i = 0 %}#}
+				
+					<tr>
+						<td width="55%">{{ competes[0].descripcion | raw }}</td>
+						<td width="10%" align = "center">
+							<div class="form-group">
+				        		<div><input type="text" readonly="readonly" id="form_competencia_competencias_0_peso" name="form[competencia][competencias][0][peso]" class="form-control" size="1" value="8">
+				        		      
+	{#
+				        		{{ form_widget(form.competencia.competencias[0].peso, { 'attr': {'class': 'form-control', 'size': '1'} }) }}
+	#}
+				        		</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[0].peso) }}</div>
+				    		</div>	
+						</td>
+						<td width="20%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[0].rango, { 'attr': {'class': 'form-control'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[0].rango) }}</div>
+				    		</div>	
+						</td>
+						<td width="15%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[0].pesoxrango, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2', 'disabled': 1 } }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[0].pesoxrango) }}</div>
+				    		</div>							
+						</td>
+					</tr>
+					<tr>
+						<td width="55%">{{ competes[1].descripcion | raw }}</td>
+						<td width="10%" align = "center">
+							<div class="form-group">
+				        		<div> <input type="text" readonly="readonly" id="form_competencia_competencias_1_peso" name="form[competencia][competencias][1][peso]" class="form-control" size="1" value="8">
+	{#
+				        		{{ form_widget(form.competencia.competencias[0].peso, { 'attr': {'class': 'form-control', 'size': '1'} }) }}
+	#}
+				        		</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[1].peso) }}</div>
+				    		</div>	
+						</td>
+						<td width="20%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[1].rango, { 'attr': {'class': 'form-control'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[1].rango) }}</div>
+				    		</div>	
+						</td>
+						<td width="15%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[1].pesoxrango, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2', 'disabled': 1 } }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[1].pesoxrango) }}</div>
+				    		</div>							
+						</td>
+					</tr>
+
+	{#{% for compete in competes %}#}
+	{% for i in 2..7 %}
+	    
+
+					<tr>
+						<td width="55%">{{ competes[i].descripcion | raw }}</td>
+						<td width="10%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[i].peso, { 'attr': {'class': 'form-control', 'size': '1'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[i].peso) }}</div>
+				    		</div>	
+						</td>
+						<td width="20%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[i].rango, { 'attr': {'class': 'form-control'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[i].rango) }}</div>
+				    		</div>	
+						</td>
+						<td width="15%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[i].pesoxrango, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2', 'disabled': 1 } }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[i].pesoxrango) }}</div>
+				    		</div>							
+						</td>
+					</tr>
+	{% endfor %}				
+
+					<tr>
+						<td></td>
+						<td align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.totalpeso, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '1'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.totalpeso) }}</div>
+				    	    </div>	
+						</td>
+						<td align = "center">Total</td>
+						<td align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.totalcompetencias, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.totalcompetencias) }}</div>
+				    	    </div>							
+						</td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+{# Eliminar render automatico de campos creados manualmente   #}
+{% do form.competencia.competencias[0].peso.setRendered %}
+{% do form.competencia.competencias[1].peso.setRendered %}
+
+
+{% else %}
+<div class="row">
+ <div class="col-md-12">
+<p align="center" class="bg-danger">El peso que se le asigne a cada competencia puede ser igual o inferior a siete (7) puntos, pero nunca mayor</p>
+</div>
+</div>
+	<div class="row">
+		
+			<table class="table table-striped" >
+				<thead>
+					<tr>
+						<th>Competencias</th>
+						<th>Peso</th>
+						<th>Rango</th>
+						<th>Peso x Rango</th>
+					</tr>
+				</thead>
+				<tbody>
+				{#{% set i = 0 %}#}
+				
+					<tr>
+						<td width="55%">{{ competes[0].descripcion | raw }}</td>
+						<td width="10%" align = "center">
+							<div class="form-group">
+				        		<div> <input type="text" readonly="readonly" id="form_competencia_competencias_0_peso" name="form[competencia][competencias][0][peso]" class="form-control" size="1" value="7">
+	{#
+				        		{{ form_widget(form.competencia.competencias[0].peso, { 'attr': {'class': 'form-control', 'size': '1'} }) }}
+	#}
+				        		</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[0].peso) }}</div>
+				    		</div>	
+						</td>
+						<td width="20%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[0].rango, { 'attr': {'class': 'form-control'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[0].rango) }}</div>
+				    		</div>	
+						</td>
+						<td width="15%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[0].pesoxrango, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2', 'disabled': 1 } }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[0].pesoxrango) }}</div>
+				    		</div>							
+						</td>
+					</tr>
+					<tr>
+						<td width="55%">{{ competes[1].descripcion | raw }}</td>
+						<td width="10%" align = "center">
+							<div class="form-group">
+				        		<div> <input type="text" readonly="readonly" id="form_competencia_competencias_1_peso" name="form[competencia][competencias][1][peso]" class="form-control" size="1" value="6">
+	{#
+				        		{{ form_widget(form.competencia.competencias[0].peso, { 'attr': {'class': 'form-control', 'size': '1'} }) }}
+	#}
+				        		</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[1].peso) }}</div>
+				    		</div>	
+						</td>
+						<td width="20%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[1].rango, { 'attr': {'class': 'form-control'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[1].rango) }}</div>
+				    		</div>	
+						</td>
+						<td width="15%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[1].pesoxrango, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2', 'disabled': 1 } }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[1].pesoxrango) }}</div>
+				    		</div>							
+						</td>
+					</tr>
+					<tr>
+						<td width="55%">{{ competes[2].descripcion | raw }}</td>
+						<td width="10%" align = "center">
+							<div class="form-group">
+				        		<div> <input type="text" readonly="readonly" id="form_competencia_competencias_2_peso" name="form[competencia][competencias][2][peso]" class="form-control" size="1" value="7">
+	{#
+				        		{{ form_widget(form.competencia.competencias[0].peso, { 'attr': {'class': 'form-control', 'size': '1'} }) }}
+	#}
+				        		</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[2].peso) }}</div>
+				    		</div>	
+						</td>
+						<td width="20%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[2].rango, { 'attr': {'class': 'form-control'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[2].rango) }}</div>
+				    		</div>	
+						</td>
+						<td width="15%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[2].pesoxrango, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2', 'disabled': 1 } }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[2].pesoxrango) }}</div>
+				    		</div>							
+						</td>
+					</tr>				
+
+	{#{% for compete in competes %}#}
+	{% for i in 3..7 %}
+	    
+
+					<tr>
+						<td width="55%">{{ competes[i].descripcion | raw }}</td>
+						<td width="10%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[i].peso, { 'attr': {'class': 'form-control', 'size': '1'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[i].peso) }}</div>
+				    		</div>	
+						</td>
+						<td width="20%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[i].rango, { 'attr': {'class': 'form-control'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[i].rango) }}</div>
+				    		</div>	
+						</td>
+						<td width="15%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.competencias[i].pesoxrango, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2', 'disabled': 1 } }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.competencias[i].pesoxrango) }}</div>
+				    		</div>							
+						</td>
+					</tr>
+	{% endfor %}				
+
+					<tr>
+						<td width="55%"></td>
+						<td width="10%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.totalpeso, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '1'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.totalpeso) }}</div>
+				    	    </div>	
+						</td>
+						<td width="20%" align = "center">Total</td>
+						<td width="15%" align = "center">
+							<div class="form-group">
+				        		<div>{{ form_widget(form.competencia.totalcompetencias, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2'} }) }}</div>
+					    		<div class="alert-danger" align= "center">{{ form_errors(form.competencia.totalcompetencias) }}</div>
+				    	    </div>							
+						</td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+{# Eliminar render automatico de campos creados manualmente   #}
+{% do form.competencia.competencias[0].peso.setRendered %}
+{% do form.competencia.competencias[1].peso.setRendered %}
+{% do form.competencia.competencias[2].peso.setRendered %}
+
+{% endif %}
+
+
+
+
+
+
+{# Evaluacion 
+
+{{ evaluacion | ld }} 
+
+{{ formularioEvaluacion | ld }} 
+#}
+<div class="class row">
+		<H2 align="center">TOTALES Y RANGO DE ACTUACION</H2>
+</div>
+
+<div class="row" align="center">
+<div class="col-md-6">
+	<table width="60%">
+		<thead>
+			<tr>
+				<th colspan = "2">CALIFICACIÓN FINAL</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>TOTAL OBJETIVOS</td>
+				<td>
+					<div align="center" class="form-group">
+		        		<div>{{ form_widget(form.evaluacion.totalobjetivos, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2'} }) }}</div>
+			    		<div class="alert-danger" align= "center">{{ form_errors(form.evaluacion.totalobjetivos) }}</div>
+		    	    </div>					
+				</td>
+			</tr>
+			<tr>
+				<td>TOTAL COMPETENCIAS</td>
+				<td>
+					<div align="center" class="form-group">
+		        		<div>{{ form_widget(form.evaluacion.totalcompetencias, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2'} }) }}</div>
+			    		<div class="alert-danger" align= "center">{{ form_errors(form.evaluacion.totalcompetencias) }}</div>
+		    	    </div>					
+				</td>
+
+			</tr>
+			<tr>
+				<td>PUNTAJE FINAL</td>
+				<td>
+					<div align="center"class="form-group">
+		        		<div>{{ form_widget(form.evaluacion.total, { 'attr': {'class': 'form-control', 'readOnly': 1, 'size': '2'} }) }}</div>
+			    		<div class="alert-danger" align= "center">{{ form_errors(form.evaluacion.total) }}</div>
+		    	    </div>						
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="col-md-6">
+	<h4>RANGO DE ACTUACION</h4>
+	<h3 id="actuacion" class="text-primary"></h3>
+</div>
+
+</div>
+
+<div class="row" align="center">
+	<h4>COMENTARIOS DEL EVALUADOR</h4>
+	<div class="form-group">
+		<div>{{ form_widget(form.evaluacion.comentariosupervisor, { 'attr': {'class': 'form-control'} }) }}</div>
+		<div class="alert-danger" align= "center">{{ form_errors(form.evaluacion.comentariosupervisor) }}</div>
+    </div>			
+	<div class="form-group">
+		<div hidden ="hidden">{{ form_widget(form.evaluacion.fecha, { 'attr': {'class': 'form-control'} }) }}</div>
+		<div hidden ="hidden" class="alert-danger" align= "center">{{ form_errors(form.evaluacion.fecha) }}</div>
+    </div>
+
+</div>
+
+<div class="row">
+	<input id="botonGuardar" class="btn btn-primary" type="submit" value="Guardar" />
+	
+</div>
+</div>
+
+
+
+
+{{ form_end(form) }}
+
+
+
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('js/evaluacion.js') }}"></script>
+{% endblock %}

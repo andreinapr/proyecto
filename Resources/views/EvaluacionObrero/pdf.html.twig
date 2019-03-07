@@ -1,0 +1,721 @@
+{#
+{% extends 'SedaBundle::layout.html.twig' %}
+#}
+
+
+<meta charset="UTF-8" />
+<style>
+    html {
+        font-family: sans-serif;
+        font-size: 14pt;
+        
+
+    }
+    table{
+        width: 1110px;
+    }
+    table, th,tr,td{
+        
+        border: 1px solid black;
+    }
+    div{
+        font-family: sans-serif;
+        font-size: 14pt;
+        width: 1110px;
+        padding: 0;
+
+    }
+    div.saltopagina{ 
+        display:block; 
+        page-break-before:always;
+    } 
+
+    div > img {
+        width: 1110px;
+        height: auto;
+    }
+    h1, h2, h3, h4{
+        margin: 5px 0;
+    }   
+    p {
+        margin-top: 8px;
+        margin-bottom: 10px;
+    }
+
+    hr {
+         border: 1px solid black;
+    }
+    td span { 
+        display: block; 
+        text-align: center;   
+    }
+    .parte{
+        font-family: sans-serif;
+        font-size: 10pt;        
+    }
+    .parte > p {
+         padding: 0;
+         margin: 0;
+    }
+</style>
+
+{% block contenido %}
+
+<div class="saltopagina">
+<div class="row" align = "center">
+    <img src="http://localhost/seda/web/img/cintillo201.png" >
+</div>
+    <h3 align="center">EVALUACION DE EFICIENCIA PERSONAL OBRERO</h3>
+ </div>
+{#
+{{ formulario | ld}}
+
+
+{{ evaluacion | ld}}
+#}
+
+<h4 align="">PARTE I</h4>
+<table class="table table-bordered" cellspacing=0 cellpadding=2>
+    <tr>
+        <td rowspan="2" align="center"><strong>DATOS DEL EVALUADO</strong></td>
+        <td align="center"><strong>APELLIDOS Y NOMBRES</strong></td>
+        <td align="center"><strong>CEDULA DE IDENTIDAD</strong></td>
+    </tr>
+    <tr>
+        <td align="center">{{ evaluacion.evaluado }}</td>
+        <td align="center">{{ evaluacion.evaluado.cedula }}</td>
+    </tr>
+</table>
+<table class="table table-bordered" cellspacing=0 cellpadding=2>    
+    <tr>
+        <td align="center"><strong>TITULO DEL CARGO</strong></td>
+        <td align="center"><strong>CODIGO</strong></td>
+        <td align="center"><strong>UBICACION ADMINISTRATIVA</strong></td>
+        <td align="center"><strong>FECHA DE INGRESO</strong></td>
+    </tr>
+    <tr>
+        <td align="center">{{ evaluacion.evaluado.cargo }}</td>
+        <td align="center"></td>
+        <td align="center">{{ evaluacion.evaluado.dependencia }}</td>
+        <td align="center"></td>
+    </tr>
+</table>
+<table class="table table-bordered" cellspacing=0 cellpadding=2>        
+    <tr>
+        <td rowspan="2" align="center" ><strong>DATOS DEL EVALUADOR</strong></td>
+        <td align="center"><strong>APELLIDOS Y NOMBRES</strong></td>
+        <td align="center"><strong>CEDULA DE IDENTIDAD</strong></td>
+    </tr>
+    <tr>
+        <td align="center">{{ evaluacion.evaluador }}</td>
+        <td align="center">{{ evaluacion.evaluador.cedula }}</td>
+    </tr>
+</table>
+<table class="table table-bordered" cellspacing=0 cellpadding=2>            
+    <tr>
+        <td align="center"><strong>TITULO DEL CARGO</strong></td>
+        <td align="center"><strong>CODIGO</strong></td>
+        <td align="center"><strong>UBICACION ADMINISTRATIVA</strong></td>
+        <td align="center"><strong>FECHA DE INGRESO</strong></td>
+    </tr>    
+    <tr>
+        <td align="center">{{ evaluacion.evaluador.cargo }}</td>
+        <td align="center"></td>
+        <td align="center">{{ evaluacion.evaluador.dependencia }}</td>
+        <td align="center"></td>
+    </tr>
+</table>
+<table class="table table-bordered" cellspacing=0 cellpadding=2>        
+    <tr>
+        <td rowspan="2" align="center" ><strong>PERIODO DE EVALIACION</strong></td>
+        <td align="center"><strong>DESDE</strong></td>
+        <td align="center"><strong>HASTA</strong></td>
+    </tr>
+    <tr>
+        <td align="center">
+            {% if evaluacion.periodo == 1 %}
+                01/01/{{ evaluacion.ano }}
+            {% else %}
+                01/07/{{ evaluacion.ano }}
+            {% endif %}
+        </td>
+        <td align="center">
+            {% if evaluacion.periodo == 1 %}
+                30/06/{{ evaluacion.ano }}
+            {% else %}
+                31/12/{{ evaluacion.ano }}
+            {% endif %}            
+        </td>
+    </tr>
+</table>
+
+<h4 align="">PARTE II - INTRODUCCIÓN:</h4>
+<div>
+    <p>
+        El objetivo de este formato es reflejar la actuación del trabajador principalmente con relación a los resultados logrados, así como  su  comportamiento  durante  el  periodo  indicado. Esta  evaluación  se  hará  conforme  a los  efectos  descritos a continuación, los cuales representan un conjunto más amplio de aspecto del evaluado.
+    </p>
+</div>
+
+<!-- factores -->
+
+<h4 align="">PARTE III - EVALUACION DE ACTUACION POR FACTORES:</h4>
+
+<table class="table table-bordered" cellspacing=0 cellpadding=2>
+    <tr>
+        <td  width="80%">
+        <ul>
+            <li>La evaluación debe ser llenada por el supervisor en bolígrafo, sin correctores ni tachaduras.</li>
+            <li>Evalúa al Obrero, en todos los casos, los factores del 1 al 8; si el evaluado supervisa a otro obreros evalúe los factores del 9 al 12.</li>
+        </ul>
+        </td>
+        <td width="4%">
+            <span> E </span>
+            <span> X </span>
+            <span> C </span>
+            <span> E </span>
+            <span> L </span>
+            <span> E </span>
+            <span> N </span>
+            <span> T </span>
+            <span> E </span>             
+        </td>
+        <td width="4%">
+            <span> M </span>
+            <span> U </span>
+            <span> Y </span>
+            <span>   </span>
+            <span> B </span>
+            <span> U </span>
+            <span> E </span>
+            <span> N </span>
+            <span> O </span>                
+        </td>
+        <td width="4%">
+            <span> B </span>
+            <span> U </span>
+            <span> E </span>
+            <span> N </span>
+            <span> O </span> 
+        </td>
+        <td width="4%">
+            <span> R </span>
+            <span> E </span>
+            <span> G </span>
+            <span> U </span>
+            <span> L </span>
+            <span> A </span>
+            <span> R </span>                         
+        </td>
+        <td width="4%">
+            <span> D </span>
+            <span> E </span>
+            <span> F </span>
+            <span> I </span>
+            <span> C </span>
+            <span> I </span>
+            <span> E </span>
+            <span> N </span>
+            <span> T </span>
+            <span> E </span>                         
+        </td>
+    </tr>
+</table>
+
+
+
+        <div class="row">
+            <table class="table table-bordered" cellspacing=0 cellpadding=2 >
+                <thead>
+                    <tr>
+                        <th rowspan="2" >Factores de Evaluacion Personal Obrero</th>
+                     
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <th>4</th>
+                    <th>3</th>
+                    <th>2</th>
+                    <th>1</th>
+                </tr>                    
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="80%">
+                            1.- CALIDAD DE TRABAJO: Realiza las tareas con precisión, pulcritud, limpieza; Logrando cumplir los parametros establecidos.
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion1 == 5 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion1 == 4 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion1 == 3 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion1 == 2 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion1 == 1 %}X{% endif %}
+                        </td>                                        
+                    </tr>
+                    <tr>
+                        <td width="80%">
+                            2.- CANTIDAD DE TRABAJO: Cumplimiento completo del trabajo asignado, volumen producido según metas, tiempo, materiales o herramientas disponibles.
+                            </td>
+                         <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion2 == 5 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion2 == 4 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion2 == 3 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion2 == 2 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion2 == 1 %}X{% endif %}
+                        </td>             
+                    </tr>
+                    <tr>
+                        <td width="80%">
+                            3.- CUMPLIMIENTO DE NORMAS: Cumplimiento de los reglamentos , normas y procedimientos, acatamiento de normas especificas de trabajo.
+                        </td>
+                         <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion3 == 5 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion3 == 4 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion3 == 3 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion3 == 2 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion3 == 1 %}X{% endif %}
+                        </td>       
+                    </tr>
+                    <tr>
+                        <td width="80%">
+                            4.- HABITOS DE SEGURIDAD: Aplica las normas de seguridad y preserva la integridad personal. Usa la dotación asignada, uniformes o implementos de protección.
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion4 == 5 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion4 == 4 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion4 == 3 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion4 == 2 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion4 == 1 %}X{% endif %}
+                        </td>       
+                    </tr>
+                    <tr>
+                        <td width="80%">
+                            5.- INTERES POR EL TRABAJO: Esmero y dedicación manifestada en la ejecución de las tareas asignadas.
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion5 == 5 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion5 == 4 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion5 == 3 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion5 == 2 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion5 == 1 %}X{% endif %}
+                        </td>       
+                    </tr>
+                    <tr>
+                        <td width="80%">
+                            6.- COOPERACIÓN: Capacidad para trabajar con otros y colaborar en forma armoniosa con sus compañeros y supervisores sin descuidar el cumplimiento de sus deberes.
+                        </td>
+                         <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion6 == 5 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion6 == 4 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion6 == 3 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion6 == 2 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion6 == 1 %}X{% endif %}
+                        </td>       
+                    <tr>
+                        <td width="80%">
+                            7.-MANEJO DE BIENES Y EQUIPOS: Cuidado con el manejo de los equipos, herramientas y maquinarias que le son asignados al trabajador.
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion7 == 5 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion7 == 4 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion7 == 3 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion7 == 2 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion7 == 1 %}X{% endif %}
+                        </td>       
+                    <tr>
+                        <td width="80%">
+                            8.-ATENCIÓN AL PÚBLICO: Disposición para prestar servicios al personal interno y público en general, en forma cortés, diligente y satisfactoria.
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion8 == 5 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion8 == 4 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion8 == 3 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion8 == 2 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresEvaluacion8 == 1 %}X{% endif %}
+                        </td>       
+                    </tr>                                                           
+                </tbody>
+            </table>
+        </div>
+
+    <!-- factores Surpervision -->
+
+        <div class="row">
+            <table class="table table-bordered" cellspacing=0 cellpadding=2 >
+                <thead>
+                    <tr>
+                       <th rowspan="2" >Personal Obrero con Tareas de Supervisión</th>
+                        <th colspan="5" valign="middle">Valor</th>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <th>4</th>
+                    <th>3</th>
+                    <th>2</th>
+                    <th>1</th>
+                </tr>      
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="80%">
+                            1.- CALIDAD DE TRABAJO: Realiza las tareas con precisión, pulcritud, limpieza; Logrando cumplir los parametros establecidos.
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision1 == 5 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision1 == 4 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision1 == 3 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision1 == 2 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision1 == 1 %}X{% endif %}
+                        </td>                                                                        
+                    </tr>
+                    <tr>
+                        <td width="80%">
+                            2.- CANTIDAD DE TRABAJO: Cumplimiento completo del trabajo asignado, volumen producido según metas, tiempo, materiales o herramientas disponibles.
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision2 == 5 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision2 == 4 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision2 == 3 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision2 == 2 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision2 == 1 %}X{% endif %}
+                        </td>  
+                    </tr>
+                    <tr>
+                        <td width="80%">
+                            3.- CUMPLIMIENTO DE NORMAS: Cumplimiento de los reglamentos , normas y procedimientos, acatamiento de normas especificas de trabajo.
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision3 == 5 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision3 == 4 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision3 == 3 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision3 == 2 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision3 == 1 %}X{% endif %}
+                        </td>  
+                    </tr>
+                    <tr>
+                        <td width="80%">
+                            4.- HABITOS DE SEGURIDAD: Aplica las normas de seguridad y preserva la integridad personal. Usa la dotación asignada, uniformes o implementos de protección.
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision1 == 5 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision1 == 4 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision1 == 3 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision1 == 2 %}X{% endif %}
+                        </td>
+                        <td width="4%" align = "center">
+                            {% if evaluacion.factoresSupervision1 == 1 %}X{% endif %}
+                        </td>                      
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+<!-- Parte IV -->
+
+        <h4 align="">PARTE IV</h4>
+        <div class="row">
+            <table class="table table-bordered" cellspacing=0 cellpadding=2 >
+                <tr >
+                    <td width="15%">EXCELENTE</td>
+                    <td width="5%" align="center">
+                        {% if (evaluacion.factoresSupervision1 == null) and (evaluacion.factoresSupervision2 == null) and (evaluacion.factoresSupervision3 == null) and (evaluacion.factoresSupervision4 == null) %}
+                            {% if (evaluacion.total >= 33) and (evaluacion.total <= 40) %}
+                               {{ evaluacion.total }}
+                            {% endif %}     
+                        {% else %}  
+                            {% if (evaluacion.total >= 49) and (evaluacion.total <= 60) %}
+                                {{ evaluacion.total }}
+                            {% endif %} 
+                        {% endif %}                 
+                    </td>
+                    <td width="15%">MUY BUENO</td>
+                    <td width="5%" align="center">
+                        {% if (evaluacion.factoresSupervision1 == null) and (evaluacion.factoresSupervision2 == null) and (evaluacion.factoresSupervision3 == null) and (evaluacion.factoresSupervision4 == null) %}
+                            {% if (evaluacion.total >= 25) and (evaluacion.total <= 32) %}
+                               {{ evaluacion.total }}
+                            {% endif %}     
+                        {% else %}  
+                            {% if (evaluacion.total >= 37) and (evaluacion.total <= 48) %}
+                                {{ evaluacion.total }}
+                            {% endif %} 
+                        {% endif %}                      
+                    </td>
+                    <td width="15%">BUENO</td>
+                    <td width="5%" align="center">
+                        {% if (evaluacion.factoresSupervision1 == null) and (evaluacion.factoresSupervision2 == null) and (evaluacion.factoresSupervision3 == null) and (evaluacion.factoresSupervision4 == null) %}
+                            {% if (evaluacion.total >= 16) and (evaluacion.total <= 24) %}
+                               {{ evaluacion.total }}
+                            {% endif %}     
+                        {% else %}  
+                            {% if (evaluacion.total >= 25) and (evaluacion.total <= 36) %}
+                                {{ evaluacion.total }}
+                            {% endif %} 
+                        {% endif %}   
+                    </td>
+                    <td width="15%">REGULAR</td>
+                    <td width="5%" align="center">
+                        {% if (evaluacion.factoresSupervision1 == null) and (evaluacion.factoresSupervision2 == null) and (evaluacion.factoresSupervision3 == null) and (evaluacion.factoresSupervision4 == null) %}
+                            {% if (evaluacion.total >= 9) and (evaluacion.total <= 16) %}
+                               {{ evaluacion.total }}
+                            {% endif %}     
+                        {% else %}  
+                            {% if (evaluacion.total >= 13) and (evaluacion.total <= 24) %}
+                                {{ evaluacion.total }}
+                            {% endif %} 
+                        {% endif %}   
+                    </td>
+                    <td width="15%">DEFICIENTE</td>
+                    <td width="5%" align="center">
+                        {% if (evaluacion.factoresSupervision1 == null) and (evaluacion.factoresSupervision2 == null) and (evaluacion.factoresSupervision3 == null) and (evaluacion.factoresSupervision4 == null) %}
+                            {% if (evaluacion.total >= 0) and (evaluacion.total <= 8) %}
+                               {{ evaluacion.total }}
+                            {% endif %}     
+                        {% else %}  
+                            {% if (evaluacion.total >= 0) and (evaluacion.total <= 12) %}
+                                {{ evaluacion.total }}
+                            {% endif %} 
+                        {% endif %}                       
+                    </td>
+                </tr>
+                <tr>
+                    <td class="parte" colspan="2" width="20%">
+                        <p>Contribuye permanentemente encima de los asignado para lograr las tareas de manera destacada y por encima del resto de los trabajadores.</p>
+                    </td>
+                    <td class="parte" colspan="2" width="20%">
+                        <p>Contribuye al logro de los resultados, superando frecuentemente lo esperado.</p>
+                    </td>
+                    <td class="parte" colspan="2" width="20%">
+                        <p>Actuación que coincide con las exigencias del puesto, cumple regularmente con el trabajo asignado.</p>
+                    </td>
+                    <td class="parte" colspan="2" width="20%">
+                        <p>Actuación que satisface las exigencias mínimas del puesto. Requiere mejora en aspectos básicos de su trabajo. Debe mejorar algunos aspectos importantes de su trabajo.</p>
+                    </td>
+                    <td class="parte" colspan="2" width="20%">
+                        <p>Actuación por debajo del mínimo de los requerimientos del puesto. No se observa contribución al logro de los resultados. Constantemente comete errores y omisiones.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+<!-- Parte V -->
+<div class="saltopagina">
+        <h4 align="">PARTE V</h4>
+        <div class="row" align="justify">
+            <h4>Comentario sobre el desempeño de actuación. <br> Resuma el desempeño del trabajador, señalando los aspectos mas relevantes.</h4>
+            <div class="textareao" align="justify">{{evaluacion.comentarioDesempeno}}</div>
+        </div>  
+
+        <div class="row" align="justify">
+            <h4>Indique los aspectos a mejorar y áreas de capacitación requeridas:</h4>
+            <div class="textareao" align="justify">{{evaluacion.aspectosMejorar}}</div>
+        </div>  
+        
+
+<!-- Parte VI -->
+        <br>
+        <h4 align="">PARTE VI</h4>
+        <p>
+            Entrevista Formal al Trabajador:<br> 
+            El proceso de Evaluación se completa con la técnica de la entrevista, cuyo objetivo es conciliar y discutir los puntos debiles de la evaluación, así como conocer los intereses y expectativas del entrevistado respecto al trabajo.
+        </p>
+        <div class="row" align="justify">
+            <h4>Indique los aspectos significativos tratados durante la entrevista </h4>
+            <div class="textareao" align="justify">{{evaluacion.aspectosSignificativos}}</div>
+        </div>  
+
+
+<!-- Parte VII -->
+    <br> 
+    <table class="table table-bordered" cellspacing=0 cellpadding=2 >
+        <tr>
+            <td width="25%"><strong>PREPARADO POR:</strong></td>
+            <td width="25%"><strong>FECHA:</strong></td>
+            <td width="25%"><strong>PREPARADO POR:</strong></td>
+            <td width="25%"><strong>FECHA:</strong></td>
+        </tr>                    
+            <td colspan="2"><br><br><strong>FIRMA:</strong> <br> <strong>NOMBRE:</strong></td>
+            <td colspan="2"><br><br><strong>FIRMA:</strong> <br> <strong>NOMBRE:</strong></td>
+        </tr>
+    </table>
+<br> 
+        <div class="row" align="justify">
+            <h4>OBSERVACIONES</h4>
+            <div>
+            <hr><br>
+            <hr><br>
+            <hr><br>            
+            <hr><br>
+            <hr>                
+            </div>  
+        </div>
+
+<br>
+<table class="table table-bordered" cellspacing=0 cellpadding=2>
+    <tr>
+        <td width="50%"><br><strong>FIRMA DEL EVALUADO:</strong><br><br></td>
+        <td width="50%"><br><strong>FECHA:</strong><br><br></td>
+    </tr>
+</table>
+    
+
+<br>
+
+<!-- SOLO PARA OGTH -->
+<h4 align="">PARA USO DE LA OFICINA DE RECURSOS HUMANOS</h4>
+    <table class="table table-bordered" cellspacing=0 cellpadding=2 >
+        <tr>
+            <td rowspan="2" ><strong>RESULTADO DE LA EVALUACIÓN</strong></td>
+            <td><strong>RANGO DE EVALUACION</strong></td>
+            <td><strong>PUNTAJE OBTENIDO</strong></td>
+        </tr>
+        <tr>
+            <td>
+                <h3 id="actuacion" class="text-primary" align="center">
+                    {% if (evaluacion.factoresSupervision1 == null) and (evaluacion.factoresSupervision2 == null) and (evaluacion.factoresSupervision3 == null) and (evaluacion.factoresSupervision4 == null) %}
+                        {% if (evaluacion.total >= 0) and (evaluacion.total <= 8) %}
+                            DEFICIENTE
+                        {% elseif (evaluacion.total >= 9) and (evaluacion.total <= 16) %}
+                            REGULAR
+                        {% elseif (evaluacion.total >= 17) and (evaluacion.total <= 24) %}
+                            BUENO
+                        {% elseif (evaluacion.total >= 25) and (evaluacion.total <= 32) %}
+                            MUY BUENO
+                        {% elseif (evaluacion.total >= 33) and (evaluacion.total <= 40) %}
+                            EXCELENTE
+                        {% endif %}     
+                    {% else %}  
+                        {% if (evaluacion.total >= 0) and (evaluacion.total <= 2) %}
+                            DEFICIENTE
+                        {% elseif (evaluacion.total >= 13) and (evaluacion.total <= 24) %}
+                            REGULAR
+                        {% elseif (evaluacion.total >= 25) and (evaluacion.total <= 36) %}
+                            BUENO
+                        {% elseif (evaluacion.total >= 37) and (evaluacion.total <= 48) %}
+                            MUY BUENO
+                        {% elseif (evaluacion.total >= 49) and (evaluacion.total <= 60) %}
+                            EXCELENTE
+                        {% endif %} 
+                    {% endif %}                     
+                </h3> 
+            </td>
+            <td> 
+                <h3 class="text-primary" align="center">{{evaluacion.total}}</h3>
+            </td>
+        </tr>
+    </table>      
+
+        <div class="row" >
+            <h4>COMENTARIOS</h4>
+            <div class="textareao" align="justify">{{ evaluacion.observacionOGTH }}</div>
+        </div>
+
+<table class="table table-bordered" cellspacing=0 cellpadding=2>
+    <thead>
+        <tr>
+            <th>FIRMA</th>
+            <th>FECHA</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><br><br></td>
+            <td><br><br></td>
+        </tr>
+    </tbody>
+</table>
+
+
+{% endblock %}

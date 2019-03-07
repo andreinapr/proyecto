@@ -1,0 +1,52 @@
+{% extends 'SedaBundle::layout.html.twig' %}
+
+{% block contenido %}
+
+{# {{ dependencias | ld }} #}
+
+
+<div class="row">
+<div class="row">
+    <div class="alert-danger" align= "center">{{ eliminado }}</div>
+</div>          
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Denominacion</th>
+                <th>Iniciales</th>
+                <th>Codigo</th>
+                <th>Activo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dependencia in dependencias %}
+            <tr>
+                <td>{{ dependencia.id }}</td>
+                <td>{{ dependencia.denominacion }}</td>
+                <td>{{ dependencia.iniciales }}</td>
+                <td>{{ dependencia.codigo }}</td>
+                    <td align = "center">
+                    {% if dependencia.activo == 0 %}
+                        <td align="center">No</td>
+                    {% else %}
+                        <td align="center">Si</td>
+                    {% endif %}
+                    </td>
+                    <td align = "center">
+                        <a href="{{ path('Seda_dependencias_editar', { 'id': dependencia.id }) }}">Editar</a></br>
+                        <a href="{{ path('Seda_dependencias_eliminar', { 'id': dependencia.id }) }}">Eliminar</a></br>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                  <td>
+                  <h2 >No existen registros de Dependencias</h2>
+                  </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

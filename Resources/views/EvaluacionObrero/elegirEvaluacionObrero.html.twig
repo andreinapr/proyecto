@@ -1,0 +1,47 @@
+{% extends 'SedaBundle::layout.html.twig' %}
+
+
+
+{% block contenido %}
+	
+		{{ form_start(formularioelegir, { 'attr': {'novalidate': 'novalidate', 'class': 'form-inline', 'id': 'elegirodi'} }) }}
+		    {{ form_errors(formularioelegir) }}
+		<div class="row">
+
+		</div>
+	    <div class="row" align= "center">
+
+		    <div class="form-group">
+		    	<div>{{ form_label(formularioelegir.evaluado, 'Funcionario') }}</div>	
+		        <div>{{ form_widget(formularioelegir.evaluado, { 'attr': {'class': 'form-control'} }) }}</div>
+			    <div class="alert-danger" align= "center">{{ form_errors(formularioelegir.evaluado) }}</div>
+		    </div>
+
+		    <div class="form-group">
+		    	<div>{{ form_label(formularioelegir.periodo, 'Periodo') }}</div>	
+		        {{ form_widget(formularioelegir.periodo, { 'attr': {'class': 'form-control'} }) }}
+			    <div class="alert-danger" align= "center">{{ form_errors(formularioelegir.periodo) }}</div>        
+		    </div>
+
+		    <div class="form-group">
+		    	<div>{{ form_label(formularioelegir.ano, 'Año') }}</div>	
+		        <div>{{ form_widget(formularioelegir.ano, { 'attr': {'class': 'form-control'} }) }}</div>
+		        <div class="alert-danger" align= "center">{{ form_errors(formularioelegir.ano) }}</div>
+		    </div>
+
+	    </div>
+		<div class="form-group"><br></div>
+	    <div class="row" align= "center">
+			<input class="btn btn-primary" type="submit" value="Buscar" />
+		</div>
+		{{ form_end(formularioelegir) }}
+	</br>
+		<div class="row">
+			 <div class="alert-danger" align= "center">{{ error }}</div>
+		</div>
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('js/elegirevaluacionobrero.js') }}"></script>
+{% endblock %}

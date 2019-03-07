@@ -1,0 +1,335 @@
+cufm\SedaBundle\Entity\Dependencia:
+    dependencia_1:
+        denominacion: CONSEJO DIRECTIVO
+        iniciales: CDO
+        codigo: 000
+
+    dependencia_2:
+        denominacion: CONSEJO ACADÉMICO
+        iniciales: CAO
+        codigo: 100
+
+    dependencia_3:
+        denominacion: CONSEJO ADMINISTRATIVO
+        iniciales: CAD
+        codigo: 110
+
+    dependencia_4:
+        denominacion: DIRECCIÓN
+        iniciales: DIR
+        codigo: 120
+
+    dependencia_5:
+        denominacion: SECRETARIA
+        iniciales: SEC
+        codigo: 200
+
+    dependencia_6:
+        denominacion: OFICINA CONSULTARÍA JURÍDICA
+        iniciales: OCOJ
+        codigo: 210
+
+    dependencia_7:
+        denominacion: OFICINA SEGURIDAD INTEGRAL, AMBIENTE Y SALUD EN EL TRABAJO
+        iniciales: OSIAS
+        codigo: 220
+
+    dependencia_8:
+        denominacion: OFICINA ATENCIÓN A PERSONAS CON DISCAPACIDAD
+        iniciales: OAPC
+        codigo: 230
+
+    dependencia_9:
+        denominacion: OFICINA DE PLANIFICACIÓN Y DESARROLLO INSTITUCIONAL
+        iniciales: OPDI
+        codigo: 240
+
+    dependencia_10:
+        denominacion: COORDINACIÓN PLANIFICACIÓN Y PRESUPUESTO
+        iniciales: CPYP
+        codigo: 241
+
+    dependencia_11:
+        denominacion: COORDINACIÓN ORGANIZACIÓN Y SISTEMAS
+        iniciales: COYS
+        codigo: 242
+
+    dependencia_12:
+        denominacion: OFICINA DE GESTIÓN DEL TALENTO HUMANO
+        iniciales: OGTH
+        codigo: 250
+
+    dependencia_13:
+        denominacion: COORDINACIÓN DE CAPTACIÓN Y SELECCIÓN
+        iniciales: CCYS
+        codigo: 251
+
+    dependencia_14:
+        denominacion: COORDINACIÓN DE  REGISTRO, CLASIFICACIÓN Y EGRESOS
+        iniciales: CRCE
+        codigo: 252
+
+    dependencia_15:
+        denominacion: COORDINACIÓN DE FORMACIÓN,  EVALUACIÓN Y DESARROLLO
+        iniciales: CFED
+        codigo: 253
+
+    dependencia_16:
+        denominacion: COORDINACIÓN DE ADMINISTRACIÓN Y REMUNERACIÓN
+        iniciales: CAYR
+        codigo: 254
+
+    dependencia_17:
+        denominacion: COORDINACIÓN DE BIENESTAR SOCIAL
+        iniciales: CBSS
+        codigo: 255
+
+    dependencia_18:
+        denominacion: OFICINA DE TECNOLOGÍA DE INFORMACIÓN Y COMUNICACIÓN
+        iniciales: OTIC
+        codigo: 260
+
+    dependencia_19:
+        denominacion: COORDINACIÓN DE DESARROLLO DE SISTEMAS DE INFORMACIÓN
+        iniciales: CDSI
+        codigo: 261
+
+    dependencia_20:
+        denominacion: COORDINACIÓN DE PLATAFORMA TECNOLÓGICA Y TELECOMUNICACIONES
+        iniciales: CPTT
+        codigo: 262
+
+    dependencia_21:
+        denominacion: COORDINACIÓN DE SOPORTE TÉCNICO Y/A USUARIO,
+        iniciales: CSTU
+        codigo: 263
+
+    dependencia_22:
+        denominacion: SUBDIRECCIÓN ACADÉMICA
+        iniciales: SAC
+        codigo: 300
+
+    dependencia_23:
+        denominacion: COORDINACIÓN APOYO DOCENTE
+        iniciales: CAPD
+        codigo: 301
+
+    dependencia_24:
+        denominacion: COORDINACIÓN MISIÓN SUCRE
+        iniciales: CMIS
+        codigo: 302
+
+    dependencia_25:
+        denominacion: COORDINACIÓN PLANIFICACIÓN ACADÉMICA
+        iniciales: CPLA
+        codigo: 303
+
+    dependencia_26:
+        denominacion: DIVISIÓN ACADÉMICA
+        iniciales: DAC
+        codigo: 310
+
+    dependencia_27:
+        denominacion: COORDINACIÓN DE CARRERAS
+        iniciales: CCAR
+        codigo: 311
+
+    dependencia_28:
+        denominacion: COORDINACIÓN DE PROGRAMAS NACIONALES DE FORMACIÓN
+        iniciales: CPNF
+        codigo: 312
+
+    dependencia_29:
+        denominacion: COORDINACIÓN DE SERVICIO COMUNITARIO
+        iniciales: CSCO
+        codigo: 313
+
+    dependencia_30:
+        denominacion: COORDINACIÓN TRABAJO DE GRADO Y PASANTÍAS
+        iniciales: CTGP
+        codigo: 314
+
+    dependencia_31:
+        denominacion: COORDINACIÓN DE DOCUMENTACIÓN E INFORMACIÓN
+        iniciales: CDEI
+        codigo: 315
+
+    dependencia_32:
+        denominacion: COORDINACIÓN DE DOCUMENTACIÓN E INFORMACIÓN (TURNO MAÑANA)
+        iniciales: CDEIM
+        codigo: 315
+
+    dependencia_33:
+        denominacion: COORDINACIÓN DE DOCUMENTACIÓN E INFORMACIÓN (TURNO TARDE)
+        iniciales: CDEIT
+        codigo: 315
+
+    dependencia_34:
+        denominacion: DIVISIÓN DE INVESTIGACIÓN Y POSTGRADO
+        iniciales: DEYP
+        codigo: 320
+
+    dependencia_35:
+        denominacion: COORDINACIÓN DE INVESTIGACIÓN
+        iniciales: CINV
+        codigo: 321
+
+    dependencia_36:
+        denominacion: COORDINACIÓN DE POSTGRADO
+        iniciales: CPOS
+        codigo: 322
+
+    dependencia_37:
+        denominacion: DIVISIÓN DE DESARROLLO ESTUDIANTIL
+        iniciales: DDE
+        codigo: 330
+
+    dependencia_38:
+        denominacion: COORDINACIÓN DE ORIENTACIÓN Y ASESORÍA EDUCATIVA
+        iniciales: COAE
+        codigo: 331
+
+    dependencia_39:
+        denominacion: COORDINACIÓN DE CALIDAD DE VIDA AL ESTUDIANTE
+        iniciales: CCVE
+        codigo: 332
+
+    dependencia_40:
+        denominacion: DIVISIÓN DE INTERACCIÓN SOCIAL
+        iniciales: DINS
+        codigo: 340
+
+    dependencia_41:
+        denominacion: COORDINACIÓN DE VINCULACIÓN CON LA COMUNIDAD
+        iniciales: CVCC
+        codigo: 341
+
+    dependencia_42:
+        denominacion: COORDINACIÓN DE PROMOCIÓN Y DIFUSIÓN CULTURAL
+        iniciales: CPDC
+        codigo: 342
+
+    dependencia_43:
+        denominacion: COORDINACIÓN DE COMUNICACIÓN
+        iniciales: CCOM
+        codigo: 343
+
+    dependencia_44:
+        denominacion: COORDINACIÓN DE DEPORTE
+        iniciales: CDPE
+        codigo: 344
+
+    dependencia_45:
+        denominacion: DIVISIÓN DE CONTROL DE ESTUDIOS
+        iniciales: DCE
+        codigo: 350
+
+    dependencia_46:
+        denominacion: COORDINACIÓN DE INGRESO
+        iniciales: CIN
+        codigo: 351
+
+    dependencia_47:
+        denominacion: COORDINACIÓN DE PROSECUCIÓN Y EGRESO
+        iniciales: CPE
+        codigo: 352
+
+    dependencia_48:
+        denominacion: COORDINACIÓN DE EVALUACIÓN
+        iniciales: CEV
+        codigo: 353
+
+    dependencia_49:
+        denominacion: SUBDIRECCIÓN ADMINISTRATIVA
+        iniciales: SAD
+        codigo: 400
+
+    dependencia_50:
+        denominacion: COORDINACIÓN ARCHIVO CENTRAL Y CORRESPONDENCIA
+        iniciales: CACC
+        codigo: 401
+
+    dependencia_51:
+        denominacion: DIVISIÓN DE ADMINISTRACIÓN
+        iniciales: DAD
+        codigo: 410
+
+    dependencia_52:
+        denominacion: COORDINACIÓN DE ADQUISICIÓN Y SUMINISTROS
+        iniciales: CAS
+        codigo: 411
+
+    dependencia_53:
+        denominacion: COORDINACIÓN DE CONTABILIDAD
+        iniciales: CCO
+        codigo: 412
+
+    dependencia_54:
+        denominacion: COORDINACIÓN DE HABILITADURÍA
+        iniciales: CHA
+        codigo: 413
+
+    dependencia_55:
+        denominacion: COORDINACIÓN DE BIENES NACIONALES
+        iniciales: CBN
+        codigo: 414
+
+    dependencia_56:
+        denominacion: COORDINACIÓN DE ALMACÉN GENERAL
+        iniciales: CAG
+        codigo: 415
+
+    dependencia_57:
+        denominacion: DIVISIÓN DE MANTENIMIENTO Y SERVICIOS
+        iniciales: DMS
+        codigo: 420
+
+    dependencia_58:
+        denominacion: COORDINACIÓN DE OPERACIONES  (TURNO MAÑANA)
+        iniciales: COP
+        codigo: 421
+
+    dependencia_59:
+        denominacion: COORDINACIÓN DE OPERACIONES (TURNO TARDE)
+        iniciales: COPT
+        codigo: 922
+
+    dependencia_60:
+        denominacion: COORDINACIÓN DE TRANSPORTE
+        iniciales: CTE
+        codigo: 422
+
+    dependencia_61:
+        denominacion: COORDINACIÓN DE REPRODUCCIÓN
+        iniciales: CRE
+        codigo: 423
+
+    dependencia_62:
+        denominacion: COMISIÓN DE PRESTACIONES SOCIALES
+        iniciales: CPS
+        codigo: 900
+
+    dependencia_63:
+        denominacion: FENASINPRES
+        iniciales: FFF
+        codigo: 901
+
+    dependencia_64:
+        denominacion: COORDINACIÓN DE FENASINPRES
+        iniciales: CFF
+        codigo: 902
+
+    dependencia_65:
+        denominacion: COORDINACIÓN NÚCLEO ACADÉMICO ANDRÉS BELLO
+        iniciales: CNA
+        codigo: 903
+
+    dependencia_66:
+        denominacion: COORDINACIÓN NÚCLEO ACADÉMICO BICENTENARIO
+        iniciales: CNB
+        codigo: 904
+
+    dependencia_67:
+        denominacion: COORDINACIÓN DE SEGURIDAD
+        iniciales: CDS
+        codigo: 905

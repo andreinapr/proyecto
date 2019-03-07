@@ -1,0 +1,81 @@
+<? php
+
+namespace cufm\SedaBundle\DataFixtures\ORM;
+
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
+use cufm\SedaBundle\Entity\Usuario;
+use cufm\SedaBundle\Entity\Dependencia;
+use cufm\SedaBundle\Entity\Cargo;
+use cufm\SedaBundle\Entity\Role;
+
+class Usuarios extends AbstractFixture implements OrderedFixtureInterface
+{
+
+    /**
+    * {@inheritDoc}
+    */      
+	public function load(ObjectManager $manager)
+	{
+            $usuarios = array(
+            array('nombres' =>'Ludwring', 'apellidos' =>'Liccien', 'cedula' =>"12762471", 'username' =>'test1@cufm.tec.ve', 'password' =>'123456', 'dependencia' =>19, 'cargo' =>4, 'supervisa' =>0, 'supervisada' =>NULL, 'nivel' =>1, 'rol' =>array(1)),
+            array('nombres' =>'Andreina', 'apellidos' =>'Perez', 'cedula' =>"12345678", 'username' =>'test2@cufm.tec.ve', 'password' =>'123456', 'dependencia' =>19, 'cargo' =>5, 'supervisa' =>0, 'supervisada' =>NULL, 'nivel' =>2, 'rol' =>array(1)),
+            array('nombres' =>'Veidy', 'apellidos' =>'Montut', 'cedula' =>"12345678", 'username' =>'test3@cufm.tec.ve', 'password' =>'123456', 'dependencia' =>18, 'cargo' =>6, 'supervisa' =>1, 'supervisada' =>18, 'nivel' =>3, 'rol' =>array(1,2)),
+            array('nombres' =>'Nathaly', 'apellidos' =>'Torres', 'cedula' =>"12345678", 'username' =>'test4@cufm.tec.ve', 'password' =>'123456', 'dependencia' =>18, 'cargo' =>6, 'supervisa' =>1, 'supervisada' =>18, 'nivel' =>3, 'rol' =>array(1,2,3)),
+                
+            );
+        
+        $repodependencia = $this->getDoctrine()->getRepository('SedaBundle:Dependencia');
+        $repocargo = $this->getDoctrine()->getRepository('SedaBundle:Cargo');
+        $reporol = $this->getDoctrine()->getRepository('SedaBundle:Role');
+        
+                   
+        foreach ($usuarios as $usuario) {
+            $entidad = new Usuario();
+            $entidad->setNombres($usuario['nombres']);
+            $entidad->setApellidos($usuario['apellidos']);
+            $entidad->setCedula($usuario['cedula']);
+            $entidad->setUsername($usuario['username']);
+            $entidad->setNivel($usuario['nivel']);
+                $factory = $this->get('security.encoder_factory');
+                $encoder = $factory->getEncoder($entidad);
+                $pass = $encoder->encodePassword($usuario['password'],$entidad->getSalt());
+            $entidad->setPassword($pass);
+                $dependencia = $repodependencia->findById($usuario['dependencia']);
+            $entidad->setDependencia($dependencia[0]);
+                $cargo = $repocargo->findById($usuario['cargo']);
+            $entidad->setCargo($cargo[0]);
+            $entidad->setSupervisor($usuario['supervisa']);
+            // Validacion de Dependencia que supervisa
+            if (!is_null($usuario['supervisada'])) {
+                $supervisada = $repodependencia->findById($usuario['supervisada']);
+                $entidad->setSupervisa($supervisada[0]);
+            }
+            // Validacion de cantidad de roles
+            $rol = $reporol->findById($usuario['rol']);
+            if (count($usuario['rol']) == 1) {
+                $entidad->addRole($rol[0]);        
+            }elseif (count($usuario['rol']) == 2) {
+                $entidad->addRole($rol[0]);
+                $entidad->addRole($rol[1]);
+            }else{
+                $entidad->addRole($rol[0]);
+                $entidad->addRole($rol[1]);
+                $entidad->addRole($rol[2]);
+            }
+            $entidad->setIsActive(1);
+		$manager->persist($entidad);
+	   }
+		$manager->flush();
+	}
+
+    /**
+    * {@inheritDoc}
+    */
+    public function getOrder()
+    {
+        return 5; // the order in which fixtures will be loaded
+    }       
+
+}

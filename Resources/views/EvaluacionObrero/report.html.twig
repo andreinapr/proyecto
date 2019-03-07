@@ -1,0 +1,127 @@
+{# {% extends 'SedaBundle::layout.html.twig' %} #}
+
+
+<meta charset="UTF-8" />
+<style>
+    html {
+    	font-family: sans-serif;
+        font-size: 14pt;
+        
+
+    }
+    table{
+    	width: 1424px;
+    }
+    th,tr,td{
+    	
+    	border: 1px solid black;
+    }
+    table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+}
+    div {
+    	font-family: sans-serif;
+        font-size: 14pt;
+    }
+ 	div.saltopagina{ 
+    	display:block; 
+      	page-break-before:always;
+   	}    
+</style>
+
+
+{% block contenido %}
+
+{# Objetivos
+
+
+{{ odi.evaluacion[0] | ld }}
+#}
+
+
+<div class="row" align = "center">
+	<img src="http://localhost/seda/web/img/cintillo201.png" >
+</div>
+
+<H2 align="center">Listado de Evaluación de Eficiencia del Personal Obrero</H2>
+
+
+<H3 align="center">PERIODO EVALUADO:  Desde:{% if periodo == 1 %}
+					    01/01/{{ ano }}   Hasta: 30/06/{{ ano }}
+					{% endif %}
+					{% if periodo == 2 %}
+					    01/07/{{ ano }}   Hasta: 31/12/{{ ano }}
+					{% endif %}						
+					
+</H3>
+
+{#  {{ evaluaciones[0] | ld }} #}
+
+<table cellspacing=0 cellpadding=2>
+	<thead>
+	    <th>N°</th>
+		<th>Nombres y Apellidos</th>
+		<th>Dependencia</th>
+		<th>Puntaje Total</th>
+		<th>Rango de Actuación</th>
+	</thead>
+	<tbody>
+{#<tr>
+	<td>N°</td>
+	<td>Nombres y Apellidos</td>
+	<td>Dependencia</td>
+	<td>Puntaje Total</td>
+	<td>Rango de Actuación</td>
+</tr>#}
+
+	{% for evaluacion in evaluaciones %}
+		<tr>
+		<td>{{ loop.index }}</td>
+			<td>
+				{{ evaluacion.evaluado }}
+			</td>
+			<td>
+				{{ evaluacion.evaluado.dependencia }}
+			</td>
+			<td>
+				{{ evaluacion.total }}
+			</td>
+			<td>
+                    {% if (evaluacion.factoresSupervision1 == null) and (evaluacion.factoresSupervision2 == null) and (evaluacion.factoresSupervision3 == null) and (evaluacion.factoresSupervision4 == null) %}
+                        {% if (evaluacion.total >= 0) and (evaluacion.total <= 8) %}
+                            DEFICIENTE
+                        {% elseif (evaluacion.total >= 9) and (evaluacion.total <= 16) %}
+                            REGULAR
+                        {% elseif (evaluacion.total >= 17) and (evaluacion.total <= 24) %}
+                            BUENO
+                        {% elseif (evaluacion.total >= 25) and (evaluacion.total <= 32) %}
+                            MUY BUENO
+                        {% elseif (evaluacion.total >= 33) and (evaluacion.total <= 40) %}
+                            EXCELENTE
+                        {% endif %}     
+                    {% else %}  
+                        {% if (evaluacion.total >= 0) and (evaluacion.total <= 2) %}
+                            DEFICIENTE
+                        {% elseif (evaluacion.total >= 13) and (evaluacion.total <= 24) %}
+                            REGULAR
+                        {% elseif (evaluacion.total >= 25) and (evaluacion.total <= 36) %}
+                            BUENO
+                        {% elseif (evaluacion.total >= 37) and (evaluacion.total <= 48) %}
+                            MUY BUENO
+                        {% elseif (evaluacion.total >= 49) and (evaluacion.total <= 60) %}
+                            EXCELENTE
+                        {% endif %} 
+                    {% endif %}  				
+
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+
+{#
+</div>		
+
+#}
+{% endblock %}

@@ -1,0 +1,217 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+	Sistema de Evaluación de desempeño
+{% endblock %}
+
+{% block stylesheets %}
+	<link type="text/css" href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+	<link type="text/css" href="{{ asset('css/bootstrap-theme.css') }}" type="text/css" rel="stylesheet" />
+	<link type="text/css" href="{{ asset('jq/DataTables-1.10.4/extensions/Plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" type="text/css" rel="stylesheet" />
+	<link type="text/css" href="{{ asset('jq/jquery-ui-1.10.3.custom/css/smoothness/jquery-ui-1.10.3.custom.min.css') }}" type="text/css" rel="stylesheet" />
+	<link type="text/css" href="{{ asset('css/main.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body -%}
+{#
+{{ app.session | ld }} 
+{{ app.user | ld }}  
+
+{{ app.session.get('evaluacion') }}
+#}
+   		<div class="row">
+
+	        <!-- Begin Header -->
+	        <div id="header" class="col-md-12">
+				{% block cabecera -%}
+				<div class="row">
+					<div id="header-izq" class="col-md-9"><H3>SISTEMA DE EVALUACIÓN DE DESEMPEÑO ADMINISTRATIVO</H3></div>
+					<div id="header-der" class="col-md-3" >
+					{% if is_granted('ROLE_USER') %}
+						<div align="center">
+							{#Identificado como: <br> #}
+							{{ app.user.apellidos }}, {{ app.user.nombres }}
+							<br>
+						</div>
+						<div align="center">
+							<a href="{{ path('usuario_clave', { 'usuario_id': app.user.id }) }}"  title="Cambiar Contraseña">Cambiar Contraseña</span>
+						</a>
+						<div>{{ "now"|date("d/m/Y") }}</div>
+						</div>
+						<div id="reloj" align="center"></div>
+					{% endif %}
+					<div id="logout" align="right">
+						<input type="button" class="btn btn-primary btn-xs" onclick="location.href='{{ path('logout') }}'" value="Salir" />
+					</div>
+
+					</div>
+				</div>
+				{% endblock %}
+			</div>
+			<!-- End Header -->
+
+		</div>
+		<div class="row">
+
+			<!-- Begin Navigation -->
+	        <div id="navigation" class="col-md-12">
+				{% block navegacion -%}
+				<div class="row">
+					<nav class="navbar navbar-default" role="navigation">
+						<div class="container-fluid">
+							<!-- Collect the nav links, forms, and other content for toggling -->
+				    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				      			<ul class="nav navbar-nav">
+				      			<li><a href="{{ path('Seda_odis_index') }}">Mis O.D.I</a></li>
+				      				{% if is_granted('ROLE_BOSS') %}
+				        			<li class="dropdown">
+				          				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Objetivos<b class="caret"></b></a>
+				          				<ul class="dropdown-menu">
+				          					{% if app.session.get('evaluacion') == 1 %}
+				            					<li><a href="{{ path('Seda_odis_crear') }}">Crear</a></li>
+											{% endif %}
+				            					<li><a href="{{ path('Seda_odis_elegir') }}">Modificar</a></li>
+
+				            					<li><a href="{{ path('Seda_odis_elimina_lista') }}">Eliminar</a></li>
+
+				            					<li><a href="{{ path('Seda_odis_imprimir_lista') }}">Imprimir</a></li>
+
+
+				            				<li><a href="{{ path('Seda_odis_lista') }}">Listar</a></li>
+				          				</ul>
+				        			</li>
+				        			<li class="dropdown">
+				          				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Evaluacion Obreros<b class="caret"></b></a>
+				          				<ul class="dropdown-menu">
+				          					{% if app.session.get('evaluacion') == 1 %}
+			            						<li><a href="{{ path('Seda_evaluacionObrero_crear') }}">Crear</a></li>
+			            					{#
+			            						<li><a href="{{ path('Seda_evaluacionObrero_elegir') }}">Modificar</a></li>
+											#}
+			            					{% endif %}
+			            					<li><a href="{{ path('Seda_evaluacionObrero') }}">Listar</a></li>
+				          				</ul>
+				        			</li>				        			
+				        			{% endif %}
+				        			{% if is_granted('ROLE_OGTH') %}
+									    <div class="navbar-header">
+									      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+									        <span class="sr-only">Toggle navigation</span>
+									        <span class="icon-bar"></span>
+									        <span class="icon-bar"></span>
+									        <span class="icon-bar"></span>
+									      </button>
+									      <a href="#" class="navbar-brand">OGTH</a>
+									    </div>
+								         <li class="dropdown">
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Objetivos<span class="caret"></span></a>
+								          <ul class="dropdown-menu" role="menu">
+								            <li><a href="{{ path('Seda_observaciones_revision_listar') }}">Revisión</a></li>
+								          </ul>
+								        </li>
+					        			<li class="dropdown">
+					          				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Evaluaciones<b class="caret"></b></a>
+					          				<ul class="dropdown-menu">
+					          					<li><a href="{{ path('Seda_evaluacion_listar') }}">Administrativos</a></li>
+					          					<li><a href="{{ path('Seda_evaluacionObrero_listar') }}">Obreros</a></li>
+					          				</ul>
+					        			</li>
+								        <li class="dropdown">
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Miselanios<span class="caret"></span></a>
+								          <ul class="dropdown-menu" role="menu">
+								            <li class="dropdown-submenu">
+                								<a tabindex="-1" href="#">Cargos</a>
+                								<ul class="dropdown-menu">
+                  									<li><a href="{{ path('Seda_cargos_crear') }}">Crear</a></li>
+                  									<li><a href="{{ path('Seda_cargos_index') }}">Listar (Editar/Eliminar)</a></li>
+                  								</ul>			
+								            </li>
+								            <li class="divider"></li>
+								            <li class="dropdown-submenu">
+                								<a tabindex="-1" href="#">Dependencias</a>
+                								<ul class="dropdown-menu">
+                  									<li><a href="{{ path('Seda_dependencias_crear') }}">Crear</a></li>
+                  									<li><a href="{{ path('Seda_dependencias_index') }}">Listar (Editar/Eliminar)</a></li>
+                  								</ul>			
+								            </li>
+								            <li class="divider"></li>
+								            <li class="dropdown-submenu">
+                								<a tabindex="-1" href="#">Observaciones</a>
+                								<ul class="dropdown-menu">
+                  									<li><a href="{{ path('Seda_observaciones_crear') }}">Crear</a></li>
+                  									<li><a href="{{ path('Seda_observaciones_index') }}">Listar (Editar/Eliminar)</a></li>
+                  								</ul>			
+								            </li>
+								            <li class="divider"></li>
+								            <li><a href="{{ path('Seda_configuracion_evaluacion') }}">Evaluación</a></li>
+								          </ul>
+								        </li>
+								        <li class="dropdown">
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<span class="caret"></span></a>
+								          <ul class="dropdown-menu" role="menu">
+								            <li><a href="{{ path('Seda_reportes_evaluaciones_listado') }}">Listado de Evaluaciones</a></li>
+								            <!--<li><a href="{{ path('Seda_observaciones_index') }}">Listar (Editar/Eliminar)</a></li>-->
+								            <!-- <li class="divider"></li> -->
+								          </ul>
+								        </li>
+
+				        			<li class="dropdown">
+				          				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios <b class="caret"></b></a>
+				          				<ul class="dropdown-menu">
+				            				<li><a href="{{ path('usuario_crear') }}">Crear</a></li>
+				            				{#
+				            				<li><a href="{{ path('usuario_editar') }}">Modificar</a></li>
+				            				<li><a href="#">Eliminar</a></li>
+				            				#}
+				            				<li><a href="{{ path('usuario_index') }}">Listar</a></li>
+				          				</ul>
+				        			</li>
+				        			{% endif %}
+				      			</ul>
+				    		</div><!-- /.navbar-collapse -->
+						</div><!-- /.container-fluid -->
+					</nav>
+				</div>
+				{% endblock %}
+			</div>
+			<!-- End Navigation -->
+
+		</div>
+		<div class="row">
+
+	       	<!-- Begin Columna izquierda -->
+
+	       	<!-- End Left Column -->
+	       	<!-- Begin Right Column -->
+	       	<div id="rightcolumn" class="col-md-12">
+				{% block contenido -%}
+				{% endblock %}
+	       	</div>
+	       	<!-- End Right Column -->
+
+        </div>
+        <div class="row">
+
+	        <!-- Begin Footer -->
+	        <div id="footer" class="col-md-12">
+				{% block footer -%}
+				{% endblock %}
+		    </div>
+			<!-- End Footer -->
+
+		</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset('jq/jquery-1.10.2.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('jq/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('jq/jquery-textarea-counter.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('jq/jquery-validation-1.11.1/dist/jquery.validate.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('jq/jquery-validation-1.11.1/dist/additional-methods.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('jq/DataTables-1.10.4/media/js/jquery.dataTables.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('jq/DataTables-1.10.4/extensions/Plugins/integration/bootstrap/3/dataTables.bootstrap.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
+
+{% endblock %}
